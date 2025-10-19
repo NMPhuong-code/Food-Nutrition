@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUTRI-APP: Ứng Dụng Dinh Dưỡng</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <header>
+        <nav id="main-nav">
+            <button onclick="showPage('bmi-page')" class="nav-btn">SỨC KHỎE (BMI)</button>
+            <button onclick="showPage('analysis-page')" class="nav-btn">PHÂN TÍCH MÓN ĂN</button>
+            <button onclick="showPage('planner-page')" class="nav-btn">LÊN KẾ HOẠCH</button>
+            <button onclick="showPage('history-page')" class="nav-btn">LỊCH SỬ & LOG</button>
+            <button onclick="showPage('admin-page')" class="nav-btn admin-btn">ADMIN</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="bmi-page" class="page">
+            <h2>1. Tính Chỉ Số Sức Khỏe & Mục Tiêu</h2>
+            <div class="input-group">
+                <label for="height-input">Chiều cao (cm):</label>
+                <input type="number" id="height-input" placeholder="Ví dụ: 175" required>
+            </div>
+            <div class="input-group">
+                <label for="weight-input">Cân nặng (kg):</label>
+                <input type="number" id="weight-input" placeholder="Ví dụ: 65" required>
+            </div>
+            <div class="input-group">
+                <label for="goal-select">Mục tiêu:</label>
+                <select id="goal-select">
+                    <option value="maintain">Duy trì cân nặng</option>
+                    <option value="lose">Giảm cân (-500 Calo)</option>
+                    <option value="gain">Tăng cơ/Tăng cân (+500 Calo)</option>
+                </select>
+            </div>
+            
+            <button id="calculate-bmi-btn" class="primary-btn">Tính BMI & Calo Duy Trì (TDEE)</button>
+            
+            <div id="bmi-result-area" class="result-box">
+                <h4>Kết Quả Phân Tích Cơ Bản:</h4>
+                <p>BMI: <span id="bmi-value" class="highlight">--</span> | Đánh giá: <span id="bmi-status">--</span></p>
+                <p>Calo Duy Trì (ước tính): <span id="tdee-value" class="highlight">0</span> kcal/ngày</p>
+                <p id="health-advice">Lời khuyên: --</p>
+            </div>
+        </section>
+
+        <section id="analysis-page" class="page" style="display:none;">
+            <h2>2. Phân Tích Món Ăn (AI/Recipe)</h2>
+
+            <div class="tab-nav">
+                <button onclick="showAnalysisTab('tab-image')" class="tab-btn active" id="tab-image-btn">Tải/Chụp Ảnh</button>
+                <button onclick="showAnalysisTab('tab-recipe')" class="tab-btn" id="tab-recipe-btn">Phân tích Công thức</button>
+            </div>
+
+            <div id="tab-image" class="analysis-tab active">
+                <p class="guide-text">Chọn ảnh hoặc chụp trực tiếp. (Tính năng AI được **mô phỏng** bằng nhập liệu)</p>
+                <input type="file" id="photo-upload" accept="image/*" capture="camera">
+                <div id="image-display-area"><img id="food-image" src="#" alt="Món ăn" style="display: none;"></div>
+                
+                <div id="mock-recognition-input" style="display: none;">
+                    <label for="mock-food-name">Xác nhận/Nhập tên món ăn:</label>
+                    <select id="mock-food-name"></select>
+                    <button id="analyze-button" class="primary-btn">Phân Tích Dinh Dưỡng</button>
+                </div>
+            </div>
+
+            <div id="tab-recipe" class="analysis-tab" style="display:none;">
+                <p class="guide-text">Nhập nguyên liệu (tên và khối lượng bằng gram).</p>
+                <table id="recipe-input-table">
+                    <thead><tr><th>Nguyên liệu</th><th>Khối lượng (g)</th><th>Hành động</th></tr></thead>
+                    <tbody></tbody>
+                </table>
+                <button id="add-ingredient-btn" class="secondary-btn">+ Thêm Nguyên Liệu</button>
+                <button id="analyze-recipe-btn" class="primary-btn">Tính Tổng Dinh Dưỡng</button>
+            </div>
+
+            <div id="analysis-result-area" class="result-box" style="display: none;">
+                <h3>Chi tiết Dinh dưỡng</h3>
+                <div id="macro-summary">
+                    <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
+                    <p>Protein: <span id="total-protein">0</span> g | Carb: <span id="total-carbs">0</span> g | Fat: <span id="total-fat">0</span> g</p>
+                    <h3>Món ăn: <span id="analyzed-food-name"></span></h3> 
+                    <p class="small-text">Vi chất: <span id="micronutrients-display">N/A</span></p>
+                </div>
+                <div class="chart-container"><canvas id="macroChart"></canvas></div>
+                
+                <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
+                <div id="swap-suggestion-area" class="swap-box"></div>
+            </div>
+        </section>
+
+        <section id="planner-page" class="page" style="display:none;">
+            <h2>3. Kế Hoạch Bữa Ăn (Meal Planner)</h2>
+            <p>Trang này sẽ hiển thị kế hoạch ăn uống hàng ngày/tuần dựa trên mục tiêu của bạn (Được lưu trong `localStorage`).</p>
+            </section>
+
+        <section id="history-page" class="page" style="display:none;">
+            <h2>4. Lịch Sử & Theo Dõi</h2>
+            <div id="daily-log-summary"></div>
+            <table id="history-table">
+                <thead><tr><th>Thời gian</th><th>Món ăn</th><th>Calo</th></tr></thead>
+                <tbody></tbody>
+            </table>
+            <button id="export-csv-btn" class="secondary-btn">Xuất Dữ liệu CSV</button>
+        </section>
+
+        <section id="admin-page" class="page admin-view" style="display:none;">
+            <h2>5. Cổng Quản Trị (Admin View)</h2>
+            <p>Admin có thể xem và chỉnh sửa dữ liệu mẫu (`data.json`) tại đây.</p>
+            <pre id="admin-data-display">Đang tải data.json...</pre>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nutri-App Project. Mã nguồn mở.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
