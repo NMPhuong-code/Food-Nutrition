@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Photo Analyze Test</title>
+</head>
+<body>
+  <h3>Upload / Test Photo</h3>
+  <input id="photoInput" type="file" accept="image/*">
+  <img id="preview" src="" style="max-width:300px; display:none; margin-top:10px;">
+  <div id="suggestions" style="margin-top:10px;"></div>
+  <div id="portionControl" style="margin-top:10px; display:none;">
+    <label>Portion (g): <input id="portionInput" type="number" min="1" value="100"></label>
+    <button id="analyzeBtn">Analyze</button>
+  </div>
+  <div id="result" style="margin-top:10px;"></div>
+
+  <script src="{{ url_for('static', filename='photo_analyze.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+[
+  {
+    "id": "pho_ga",
+    "name": "Phở gà",
+    "serving_default": 400,
+    "serving_unit": "g",
+    "kcal_per_serving": 450,
+    "protein_g": 28,
+    "carbs_g": 45,
+    "fat_g": 12
+  },
+  {
+    "id": "com_tam_suon",
+    "name": "Cơm tấm sườn",
+    "serving_default": 450,
+    "serving_unit": "g",
+    "kcal_per_serving": 820,
+    "protein_g": 35,
+    "carbs_g": 95,
+    "fat_g": 30
+  },
+  {
+    "id": "banh_mi_thit",
+    "name": "Bánh mì thịt",
+    "serving_default": 200,
+    "serving_unit": "g",
+    "kcal_per_serving": 450,
+    "protein_g": 18,
+    "carbs_g": 46,
+    "fat_g": 18
+  },
+  {
+    "id": "bun_bo_hue",
+    "name": "Bún bò Huế",
+    "serving_default": 450,
+    "serving_unit": "g",
+    "kcal_per_serving": 520,
+    "protein_g": 30,
+    "carbs_g": 60,
+    "fat_g": 18
+  },
+  {
+    "id": "goi_cuon",
+    "name": "Gỏi cuốn",
+    "serving_default": 120,
+    "serving_unit": "g",
+    "kcal_per_serving": 180,
+    "protein_g": 8,
+    "carbs_g": 20,
+    "fat_g": 6
+  },
+  {
+    "id": "bun_cha",
+    "name": "Bún chả",
+    "serving_default": 400,
+    "serving_unit": "g",
+    "kcal_per_serving": 600,
+    "protein_g": 30,
+    "carbs_g": 60,
+    "fat_g": 28
+  },
+  {
+    "id": "chao_thit_bam",
+    "name": "Cháo thịt băm",
+    "serving_default": 350,
+    "serving_unit": "g",
+    "kcal_per_serving": 350,
+    "protein_g": 15,
+    "carbs_g": 50,
+    "fat_g": 10
+  },
+  {
+    "id": "mien_ga",
+    "name": "Miến gà",
+    "serving_default": 380,
+    "serving_unit": "g",
+    "kcal_per_serving": 390,
+    "protein_g": 25,
+    "carbs_g": 40,
+    "fat_g": 10
+  },
+  {
+    "id": "ca_chua_trung",
+    "name": "Canh cà chua trứng",
+    "serving_default": 250,
+    "serving_unit": "g",
+    "kcal_per_serving": 150,
+    "protein_g": 8,
+    "carbs_g": 10,
+    "fat_g": 8
+  },
+  {
+    "id": "thit_bo_xao_rau",
+    "name": "Thịt bò xào rau củ",
+    "serving_default": 150,
+    "serving_unit": "g",
+    "kcal_per_serving": 250,
+    "protein_g": 25,
+    "carbs_g": 5,
+    "fat_g": 15
+  },
+  {
+    "id": "trang_mieng_hoa_qua",
+    "name": "Tráng miệng (Hoa quả)",
+    "serving_default": 150,
+    "serving_unit": "g",
+    "kcal_per_serving": 80,
+    "protein_g": 1,
+    "carbs_g": 20,
+    "fat_g": 0
+  },
+  {
+    "id": "sua_chua_khong_duong",
+    "name": "Sữa chua không đường (100g)",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 60,
+    "protein_g": 4,
+    "carbs_g": 4,
+    "fat_g": 3
+  },
+  {
+    "id": "soup",
+    "name": "Cream of tomato soup imp",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 54,
+    "protein_g": 0.9,
+    "carbs_g": 7.2,
+    "fat_g": 2.3,
+    "source": "OpenFoodFacts"
+  },
+  {
+    "id": "avocado",
+    "name": "Avocado & Lemon Mayo",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 717,
+    "protein_g": 1.8,
+    "carbs_g": 0.3,
+    "fat_g": 78.7,
+    "source": "OpenFoodFacts"
+  },
+  {
+    "id": "cheese",
+    "name": "Perly",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 97,
+    "protein_g": 8,
+    "carbs_g": 9.4,
+    "fat_g": 3,
+    "source": "OpenFoodFacts"
+  },
+  {
+    "id": "strawberry",
+    "name": "Strawberry Jam",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 241,
+    "protein_g": 0.4,
+    "carbs_g": 59,
+    "fat_g": 0.1,
+    "source": "OpenFoodFacts"
+  },
+  {
+    "id": "grapefruit",
+    "name": "Jus de pamplemousse rose",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 43,
+    "protein_g": 0.5,
+    "carbs_g": 8.9,
+    "fat_g": 0.1,
+    "source": "OpenFoodFacts"
+  },
+  {
+    "id": "citrus",
+    "name": "Doce Extra Fresa Morango",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 241,
+    "protein_g": 0.4,
+    "carbs_g": 57.8,
+    "fat_g": 0.3,
+    "source": "OpenFoodFacts"
+  },
+  {
+    "id": "citrus",
+    "name": "Doce Extra Fresa Morango",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 241,
+    "protein_g": 0.4,
+    "carbs_g": 57.8,
+    "fat_g": 0.3,
+    "source": "OpenFoodFacts"
+  }
+]
