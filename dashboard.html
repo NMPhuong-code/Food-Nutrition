@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Nutrition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <div id="app-container">
+        <!-- Sidebar Navigation -->
+        <nav id="sidebar">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Nutrition</span>
+            </a>
+            <ul id="sidebar-nav">
+                <li><button onclick="showPage('dashboard-page')" class="nav-btn active"><i class="fa-solid fa-table-columns"></i><span>Tổng quan</span></button></li>
+                <li><button onclick="showPage('bmi-page')" class="nav-btn"><i class="fa-solid fa-arrows-up-down"></i><span>Sức khỏe (BMI)</span></button></li>
+                <li><button onclick="showPage('analysis-page')" class="nav-btn"><i class="fa-solid fa-gear"></i><span>Phân tích</span></button></li>
+                <li><button onclick="showPage('planner-page')" class="nav-btn"><i class="fa-solid fa-calendar-days"></i><span>Kế hoạch</span></button></li>
+                <li><button onclick="showPage('history-page')" class="nav-btn"><i class="fa-solid fa-history"></i><span>Lịch sử & Log</span></button></li>
+                <li id="admin-nav-item" style="display: none;"><button onclick="showPage('admin-page')" class="nav-btn"><i class="fa-solid fa-user-shield"></i><span>Admin</span></button></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Header -->
+            <header id="main-header">
+                <h2 id="page-title">Tổng quan</h2>
+                <div class="user-menu-container">
+                    <button id="user-menu-button"><i class="fa-solid fa-user-circle"></i></button>
+                    <div id="user-menu-dropdown" class="user-menu-dropdown">
+                        <!-- JS will populate this -->
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="page-content-wrapper">
+                <section id="dashboard-page" class="page">
+                    <div class="summary-cards">
+                        <div class="card"><h4>Mục Tiêu Calo (TDEE)</h4><p><span id="dash-tdee-value">0</span> <span class="unit">kcal/ngày</span></p></div>
+                        <div class="card"><h4>Calo Đã Nạp Hôm Nay</h4><p><span id="dash-daily-calo">0</span> <span class="unit">kcal</span></p></div>
+                        <div class="card"><h4>Chỉ Số BMI Hiện Tại</h4><p><span id="dash-bmi-value">--</span> <span class="unit" id="dash-bmi-status"></span></p></div>
+                    </div>
+                    <h3>Biểu Đồ Theo Dõi Tiến Độ Calo (7 ngày)</h3>
+                    <div class="chart-container-large"><canvas id="progressChart"></canvas></div>
+                </section>
+
+                <section id="bmi-page" class="page" style="display:none;">
+                    <div class="input-group"><label for="height-input">Chiều cao (cm):</label><input type="number" id="height-input" placeholder="Ví dụ: 175" required></div>
+                    <div class="input-group"><label for="weight-input">Cân nặng (kg):</label><input type="number" id="weight-input" placeholder="Ví dụ: 65" required></div>
+                    <div class="input-group">
+                        <label for="goal-select">Mục tiêu:</label>
+                        <select id="goal-select">
+                            <option value="maintain">Duy trì cân nặng</option>
+                            <option value="lose">Giảm cân (-500 Calo)</option>
+                            <option value="gain">Tăng cơ/Tăng cân (+500 Calo)</option>
+                        </select>
+                    </div>
+                    <button id="calculate-bmi-btn" class="primary-btn">Tính BMI & Calo Duy Trì (TDEE)</button>
+                    <div id="bmi-result-area" class="result-box">
+                        <h4>Kết Quả Phân Tích Cơ Bản:</h4>
+                        <p>BMI: <span id="bmi-value" class="highlight">--</span> | Đánh giá: <span id="bmi-status">--</span></p>
+                        <p>Calo Duy Trì (ước tính): <span id="tdee-value" class="highlight">0</span> kcal/ngày</p>
+                    </div>
+                </section>
+
+                <section id="analysis-page" class="page" style="display:none;">
+                    <div class="tab-nav">
+                        <button onclick="showAnalysisTab('tab-image')" class="tab-btn active" id="tab-image-btn">Tải/Chụp Ảnh</button>
+                        <button onclick="showAnalysisTab('tab-recipe')" class="tab-btn" id="tab-recipe-btn">Phân tích Công thức</button>
+                    </div>
+                    <div id="tab-image" class="analysis-tab active">
+                        <p>Chọn ảnh hoặc chụp trực tiếp. (Tính năng AI được **mô phỏng** bằng nhập liệu)</p>
+                        <input type="file" id="photo-upload" accept="image/*" capture="camera">
+                        <div id="mock-recognition-input" style="display: none;"><label for="mock-food-name">Xác nhận/Nhập tên món ăn:</label><select id="mock-food-name"></select><button id="analyze-button" class="primary-btn">Phân Tích Dinh Dưỡng</button></div>
+                    </div>
+                    <div id="tab-recipe" class="analysis-tab" style="display:none;">
+                        <p>Nhập nguyên liệu (tên và khối lượng bằng gram).</p>
+                        <table id="recipe-input-table"><thead><tr><th>Nguyên liệu</th><th>Khối lượng (g)</th><th>Hành động</th></tr></thead><tbody></tbody></table>
+                        <button id="add-ingredient-btn" class="secondary-btn">+ Thêm Nguyên Liệu</button><button id="analyze-recipe-btn" class="primary-btn">Tính Tổng Dinh Dưỡng</button>
+                    </div>
+                    <div id="analysis-result-area" class="result-box" style="display: none;">
+                        <h3>Chi tiết Dinh dưỡng</h3>
+                        <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
+                        <p>Protein: <span id="total-protein">0</span>g | Carb: <span id="total-carbs">0</span>g | Fat: <span id="total-fat">0</span>g</p>
+                        <h4>Món ăn: <span id="analyzed-food-name"></span></h4>
+                        <div class="chart-container" style="block-size: 200px;"><canvas id="macroChart"></canvas></div>
+                        <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
+                    </div>
+                </section>
+
+                <section id="planner-page" class="page" style="display:none;">
+                    <h3>Kế Hoạch Bữa Ăn</h3>
+                    <p>Trang này sẽ hiển thị kế hoạch ăn uống hàng ngày/tuần dựa trên mục tiêu của bạn.</p>
+                </section>
+                
+                <section id="history-page" class="page" style="display:none;">
+                    <h3>Lịch Sử & Theo Dõi</h3>
+                    <div id="daily-log-summary"></div>
+                    <table id="history-table"><thead><tr><th>Thời gian</th><th>Món ăn</th><th>Calo</th><th>Macros (P/C/F)</th></tr></thead><tbody></tbody></table>
+                    <button id="export-csv-btn" class="secondary-btn">Xuất Dữ liệu CSV</button>
+                </section>
+                
+                <section id="admin-page" class="page" style="display:none;">
+                    <h3>Cổng Quản Trị</h3>
+                    <p>Admin có thể xem và chỉnh sửa dữ liệu mẫu (`data.json`) tại đây.</p>
+                    <pre id="admin-data-display">Đang tải data.json...</pre>
+                </section>
+            </div>
+             <!-- Nút cuộn lên đầu trang -->
+            <button id="scrollToTopBtn" title="Lên đầu trang">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
