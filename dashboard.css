@@ -95,3 +95,26 @@ th { background-color: #f2f2f2; }
 .card .unit { font-size: 0.6em; color: #777; }
 .chart-container-large { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
 
+/* Scroll to Top Button */
+#scrollToTopBtn {
+    display: none; 
+    position: fixed;
+    inset-block-end: 30px;
+    inset-inline-end: 30px;
+    z-index: 100;
+    border: none;
+    outline: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 50%;
+    inline-size: 50px;
+    block-size: 50px;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: opacity 0.3s, background-color 0.3s;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #218838;
+}

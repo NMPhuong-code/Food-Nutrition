@@ -16,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // --- 1. LANDING PAGE LOGIC ---
 function setupLandingPage() {
+    // ... (This part remains unchanged from previous correct version)
     const authSection = document.getElementById('auth-section');
     const userRole = sessionStorage.getItem('userRole');
 
     if (userRole) {
-        // User is logged in
         authSection.innerHTML = `
             <div class="user-menu-container">
                 <button id="user-menu-button"><i class="fa-solid fa-user-circle"></i></button>
@@ -34,8 +34,7 @@ function setupLandingPage() {
         document.getElementById('user-menu-button').addEventListener('click', toggleUserMenu);
         document.getElementById('logout-button').addEventListener('click', logout);
     } else {
-        // User is not logged in
-        authSection.innerHTML = `<a href="login.html">Đăng nhập</a>`;
+        authSection.innerHTML = `<a href="login.html" class="login-button">Đăng nhập</a>`;
     }
 }
 
@@ -52,17 +51,13 @@ function logout() {
     window.location.href = 'index.html';
 }
 
-// Close dropdown if clicked outside
 window.onclick = function(event) {
     if (event.target && !event.target.matches('#user-menu-button, #user-menu-button *')) {
         document.querySelectorAll('.user-menu-dropdown.show').forEach(d => d.classList.remove('show'));
     }
 }
 
-
 // --- 2. DASHBOARD PAGE LOGIC ---
-
-// Global variables for dashboard
 let nutritionData = {};
 let macroChart;
 let progressChart;
@@ -116,6 +111,7 @@ function initializeDashboardUI() {
 }
 
 function initDashboardEventListeners() {
+    // Existing listeners
     document.getElementById('calculate-bmi-btn').addEventListener('click', calculateBMI);
     document.getElementById('photo-upload').addEventListener('change', handleImageUpload);
     document.getElementById('analyze-button').addEventListener('click', analyzeDishFromMock);
@@ -123,6 +119,24 @@ function initDashboardEventListeners() {
     document.getElementById('analyze-recipe-btn').addEventListener('click', analyzeRecipe);
     document.getElementById('save-meal-btn').addEventListener('click', saveAnalyzedMeal);
     document.getElementById('export-csv-btn').addEventListener('click', exportHistoryToCSV);
+
+    // Scroll to Top Logic
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    const scrollableContent = document.querySelector('.page-content-wrapper');
+
+    if(scrollToTopBtn && scrollableContent){
+        scrollableContent.addEventListener('scroll', () => {
+            if (scrollableContent.scrollTop > 100) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            scrollableContent.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 }
 
 function showPage(pageId) {
@@ -131,7 +145,6 @@ function showPage(pageId) {
     if (pageElement) {
         pageElement.style.display = 'block';
     } else {
-        // Fallback to dashboard if page not found
         document.getElementById('dashboard-page').style.display = 'block';
         pageId = 'dashboard-page';
     }
@@ -150,6 +163,7 @@ function showPage(pageId) {
     }
 }
 
+// ... All other dashboard functions (calculateBMI, analyzeRecipe, etc.) remain unchanged ...
 // --- ALL DASHBOARD CORE FUNCTIONS ---
 
 function calculateBMI() {

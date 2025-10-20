@@ -91,7 +91,7 @@
                         <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
                         <p>Protein: <span id="total-protein">0</span>g | Carb: <span id="total-carbs">0</span>g | Fat: <span id="total-fat">0</span>g</p>
                         <h4>Món ăn: <span id="analyzed-food-name"></span></h4>
-                        <div class="chart-container" style="height: 200px;"><canvas id="macroChart"></canvas></div>
+                        <div class="chart-container" style="block-size: 200px;"><canvas id="macroChart"></canvas></div>
                         <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
                     </div>
                 </section>
@@ -114,6 +114,10 @@
                     <pre id="admin-data-display">Đang tải data.json...</pre>
                 </section>
             </div>
+             <!-- Nút cuộn lên đầu trang -->
+            <button id="scrollToTopBtn" title="Lên đầu trang">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
         </main>
     </div>
     <script src="script.js"></script>

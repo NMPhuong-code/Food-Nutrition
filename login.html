@@ -3,35 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chào mừng đến với Nutrition</title>
-    <link rel="stylesheet" href="login.style.css">
+    <title>Đăng nhập - Nutrition</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="login.style.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-box">
+    <div class="background-image"></div>
+    <div class="container">
+        <!-- Ban đầu chỉ hiển thị phần chọn vai trò -->
+        <div id="role-selection" class="login-card">
             <h1>Nutrition</h1>
             <p>Chọn vai trò để bắt đầu truy cập hệ thống</p>
-            <button id="admin-login-btn" class="login-btn admin-btn">
-                <i class="fa-solid fa-user-shield"></i> VAI TRÒ ADMIN
-            </button>
-            <button id="user-login-btn" class="login-btn user-btn">
-                <i class="fa-solid fa-user"></i> VAI TRÒ USER
-            </button>
+            <button id="admin-role-btn" class="role-btn admin"><i class="fa-solid fa-user-shield"></i> VAI TRÒ ADMIN</button>
+            <button id="user-role-btn" class="role-btn user"><i class="fa-solid fa-user"></i> VAI TRÒ USER</button>
         </div>
     </div>
 
-    <script>
-        document.getElementById('admin-login-btn').addEventListener('click', function() {
-            sessionStorage.setItem('userRole', 'admin');
-            window.location.href = 'index.html';
-        });
+    <!-- Cửa sổ Đăng nhập / Đăng ký (Modal) - Ẩn ban đầu -->
+    <div id="auth-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
 
-        document.getElementById('user-login-btn').addEventListener('click', function() {
-            sessionStorage.setItem('userRole', 'user');
-            window.location.href = 'index.html';
-        });
-    </script>
+            <!-- Form Đăng nhập -->
+            <div id="login-view">
+                <h2 id="login-title">Đăng nhập</h2>
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="login-username">Tài khoản</label>
+                        <input type="text" id="login-username" required>
+                    </div>
+                    <div class="input-group password-group">
+                        <label for="login-password">Mật khẩu</label>
+                        <input type="password" id="login-password" required>
+                        <i class="fa-solid fa-eye toggle-password"></i>
+                    </div>
+                    <!-- Mã bảo vệ cho User -->
+                    <div id="captcha-section" class="input-group" style="display: none;">
+                        <label for="captcha-input">Mã bảo vệ</label>
+                        <div class="captcha-box">
+                            <span id="captcha-code"></span>
+                            <button type="button" id="refresh-captcha"><i class="fa-solid fa-sync"></i></button>
+                        </div>
+                        <input type="text" id="captcha-input" placeholder="Nhập mã bảo vệ">
+                    </div>
+                    <p id="login-error-msg" class="error-msg"></p>
+                    <button type="submit" class="submit-btn">Đăng nhập</button>
+                </form>
+                <p id="register-link-container" class="form-switch-text">Chưa có tài khoản? <a href="#" id="show-register-view">Tạo tài khoản</a></p>
+            </div>
+
+            <!-- Form Đăng ký -->
+            <div id="register-view" style="display: none;">
+                <h2>Tạo tài khoản</h2>
+                <form id="register-form">
+                    <div class="input-group">
+                        <label for="register-username">Tài khoản mới</label>
+                        <input type="text" id="register-username" required>
+                    </div>
+                    <div class="input-group password-group">
+                        <label for="register-password">Mật khẩu</label>
+                        <input type="password" id="register-password" required>
+                        <i class="fa-solid fa-eye toggle-password"></i>
+                        <small>Yêu cầu tối thiểu 6 ký tự, bao gồm cả chữ và số.</small>
+                    </div>
+                    <div class="input-group password-group">
+                        <label for="register-confirm-password">Nhập lại mật khẩu</label>
+                        <input type="password" id="register-confirm-password" required>
+                        <i class="fa-solid fa-eye toggle-password"></i>
+                    </div>
+                    <p id="register-error-msg" class="error-msg"></p>
+                    <button type="submit" class="submit-btn">Tạo tài khoản</button>
+                </form>
+                <p class="form-switch-text">Đã có tài khoản? <a href="#" id="show-login-view">Quay lại đăng nhập</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
 </body>
 </html>
 
