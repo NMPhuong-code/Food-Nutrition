@@ -1,3 +1,4 @@
+# DÁN TOÀN BỘ KHỐI NÀY VÀO ĐẦU FILE
 import json, os, requests 
 from difflib import get_close_matches
 
@@ -8,24 +9,52 @@ OFF_USER_AGENT = "NutriApp/1.0"
 
 DATA_PATH = os.path.join(os.path.dirname(__file__), 'data.json')
 
-with open(DATA_PATH, encoding='utf-8') as f:
-    FOODS = json.load(f)
+# Khối code khởi tạo biến toàn cục
+try:
+    with open(DATA_PATH, encoding='utf-8') as f:
+        data = json.load(f)
 
-BY_ID = {item['id']: item for item in FOODS if 'id' in item}
-BY_NAME = {item['name'].lower(): item for item in FOODS if 'name' in item}
+    # Lấy ra list các "giá trị" từ mỗi dictionary
+    dishes_list = list(data.get('dishes', {}).values())
+    ingredients_list = list(data.get('ingredients', {}).values())
+    FOODS = dishes_list + ingredients_list
+
+    BY_ID = {item['id']: item for item in FOODS if 'id' in item}
+    BY_NAME = {item['name'].lower(): item for item in FOODS if 'name' in item}
+except (FileNotFoundError, json.JSONDecodeError):
+    # Nếu file data.json có vấn đề, khởi tạo các biến rỗng để chương trình không bị crash
+    FOODS = []
+    BY_ID = {}
+    BY_NAME = {}
 
 # --- LOGIC CACHING VÀ GỌI API BÊN NGOÀI ---
 
+# --- LOGIC CACHING VÀ GỌI API BÊN NGOÀI ---
+
+# THAY BẰNG HÀM NÀY
 def save_data_to_cache(new_data_item):
     """Lưu dữ liệu món ăn mới vào data.json."""
     global FOODS, BY_ID, BY_NAME
+
+    # Đọc lại toàn bộ cấu trúc dictionary từ file
+    with open(DATA_PATH, 'r', encoding='utf-8') as f:
+        full_data = json.load(f)
+
+    # Thêm món ăn mới vào danh sách 'dishes'
+    # Nếu chưa có 'dishes', tạo mới
+    if 'dishes' not in full_data:
+        full_data['dishes'] = []
+    # full_data['dishes'].append(new_data_item)
+    full_data['dishes'][new_data_item['id']] = new_data_item
+
+    # Cập nhật lại các biến trong bộ nhớ
     FOODS.append(new_data_item)
     BY_ID[new_data_item['id']] = new_data_item
     BY_NAME[new_data_item['name'].lower()] = new_data_item
-    
-    with open(DATA_PATH, 'w', encoding='utf-8') as f:
-        json.dump(FOODS, f, ensure_ascii=False, indent=2) 
 
+    # Lưu lại toàn bộ cấu trúc dictionary
+    with open(DATA_PATH, 'w', encoding='utf-8') as f:
+        json.dump(full_data, f, ensure_ascii=False, indent=2)
 def fetch_nutrition_from_edamam(query):
     """Gọi Edamam API (Chính)."""
     if not EDAMAM_APP_ID or not EDAMAM_APP_KEY: return None

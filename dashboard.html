@@ -11,7 +11,6 @@
 </head>
 <body>
     <div id="app-container">
-        <!-- Sidebar Navigation -->
         <nav id="sidebar">
             <a href="index.html" class="logo">
                 <i class="fa-solid fa-leaf"></i>
@@ -27,20 +26,16 @@
             </ul>
         </nav>
 
-        <!-- Main Content -->
         <main id="main-content">
-            <!-- Header -->
             <header id="main-header">
                 <h2 id="page-title">Tổng quan</h2>
                 <div class="user-menu-container">
                     <button id="user-menu-button"><i class="fa-solid fa-user-circle"></i></button>
                     <div id="user-menu-dropdown" class="user-menu-dropdown">
-                        <!-- JS will populate this -->
-                    </div>
+                        </div>
                 </div>
             </header>
 
-            <!-- Page Content -->
             <div class="page-content-wrapper">
                 <section id="dashboard-page" class="page">
                     <div class="summary-cards">
@@ -53,52 +48,140 @@
                 </section>
 
                 <section id="bmi-page" class="page" style="display:none;">
-                    <div class="input-group"><label for="height-input">Chiều cao (cm):</label><input type="number" id="height-input" placeholder="Ví dụ: 175" required></div>
-                    <div class="input-group"><label for="weight-input">Cân nặng (kg):</label><input type="number" id="weight-input" placeholder="Ví dụ: 65" required></div>
-                    <div class="input-group">
-                        <label for="goal-select">Mục tiêu:</label>
-                        <select id="goal-select">
-                            <option value="maintain">Duy trì cân nặng</option>
-                            <option value="lose">Giảm cân (-500 Calo)</option>
-                            <option value="gain">Tăng cơ/Tăng cân (+500 Calo)</option>
-                        </select>
-                    </div>
-                    <button id="calculate-bmi-btn" class="primary-btn">Tính BMI & Calo Duy Trì (TDEE)</button>
-                    <div id="bmi-result-area" class="result-box">
-                        <h4>Kết Quả Phân Tích Cơ Bản:</h4>
-                        <p>BMI: <span id="bmi-value" class="highlight">--</span> | Đánh giá: <span id="bmi-status">--</span></p>
-                        <p>Calo Duy Trì (ước tính): <span id="tdee-value" class="highlight">0</span> kcal/ngày</p>
+                    <div class="bmi-content-wrapper">
+        
+                        <div class="bmi-explanation">
+                            <h2>ĐO CHỈ SỐ CÂN NẶNG - CHIỀU CAO (BMI) ONLINE</h2>
+                            
+                            <div class="explanation-box">
+                                <p>BMI không đo lường trực tiếp mỡ của cơ thể nhưng các nghiên cứu đã chứng minh rằng BMI tương quan với đo mỡ trực tiếp. BMI là phương pháp không tốn kém và dễ thực hiện để tầm soát vấn đề sức khoẻ.</p>
+                                <div class="decoration-image">
+                                    <img src="image/BMI.jpg" alt="Thước dây và Kính lúp đo BMI">
+                                </div>
+                                
+                                <h4>1. Sử dụng BMI như thế nào?</h4>
+                                <p>BMI được sử dụng như là một công cụ tầm soát để xác định trọng lượng thích hợp cho người lớn. Tuy nhiên, BMI không phải là công cụ chẩn đoán. Ví dụ, một người có chỉ số BMI cao, để xác định trọng lượng có phải là một nguy cơ cho sức khoẻ không thì các bác sĩ cần thực hiện thêm các đánh giá khác. Những đánh giá này gồm đo độ dày nếp da, đánh giá chế độ ăn, hoạt động thể lực, tiền sử gia đình và các sàng lọc sức khoẻ khác.</p>
+                                
+                                <h4>2. Tại sao Cơ quan kiểm soát bệnh tật Hoa Kỳ - CDC sử dụng BMI?</h4>
+                                <p>Tính chỉ số BMI là một phương pháp tốt nhất để đánh giá thừa cân và béo phì cho một quần thể dân chúng. Để tính chỉ số BMI, người ta chỉ yêu cầu đo chiều cao và cân nặng, không tốn kém và dễ thực hiện. Sử dụng chỉ số BMI cho phép người ta so sánh tình trạng cân nặng của họ với quần thể nói chung. Công thức tính BMI theo đơn vị kilograms và mét.</p>
+                            </div>
+                            
+                            <div class="bmi-input-area">
+                                <h3>Nhập Thông Số Tính Toán</h3>
+                                <div class="input-group"><label for="height-input">Chiều cao (cm):</label><input type="number" id="height-input" placeholder="Ví dụ: 175" required></div>
+                                <div class="input-group"><label for="weight-input">Cân nặng (kg):</label><input type="number" id="weight-input" placeholder="Ví dụ: 65" required></div>
+                                <div class="input-group">
+                                    <label for="gender-select">Giới tính:</label>
+                                    <select id="gender-select">
+                                        <option value="male">Nam</option>
+                                        <option value="female">Nữ</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="goal-select">Mục tiêu Calo:</label>
+                                    <select id="goal-select">
+                                        <option value="maintain">Duy trì cân nặng</option>
+                                        <option value="lose">Giảm cân (-500 Calo)</option>
+                                        <option value="gain">Tăng cơ/Tăng cân (+500 Calo)</option>
+                                    </select>
+                                </div>
+                                <button id="calculate-bmi-btn" class="primary-btn">Tính BMI & Calo Duy Trì (TDEE)</button>
+                            </div>
+                        </div>
+                        
+                        <div class="bmi-result-display">
+                            <h3>Kết Quả & Phân Loại BMI</h3>
+
+                            <div class="bmi-visualizer-card">
+                                <p class="bmi-label">Chỉ số BMI của bạn là:</p>
+                                <div class="bmi-gauge">
+                                    <span id="bmi-value-large" class="bmi-main-value">--</span>
+                                </div>
+                                <div class="bmi-status-bar" id="bmi-status-bar">
+                                    <span id="bmi-status-large" class="status-text">--</span>
+                                </div>
+                                
+                                <div class="bmi-rating-guide">
+                                    <img src="image/BODY_BMI.jpg" alt="Phân loại chỉ số BMI" />
+                                </div>
+                            </div>
+
+                            <div id="bmi-result-area" class="result-box">
+                                <h4>Phân Tích Calo Mục Tiêu:</h4>
+                                <p>Đánh giá BMI: <span id="bmi-status" class="highlight">--</span></p>
+                                <p>Calo Duy Trì (ước tính): <span id="tdee-value" class="highlight">0</span> kcal/ngày</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
-
+<div id="tab-recipe" class="analysis-tab" style="display:none;">
+    <p>Nhập nguyên liệu (tên và khối lượng bằng gram).</p>
+    <table id="recipe-input-table"><thead><tr><th>Nguyên liệu</th><th>Khối lượng (g)</th><th>Hành động</th></tr></thead><tbody></tbody></table>
+    <button id="add-ingredient-btn" class="secondary-btn">+ Thêm Nguyên Liệu</button><button id="analyze-recipe-btn" class="primary-btn">Tính Tổng Dinh Dưỡng</button>
+</div>
+<div id="analysis-result-area" class="result-box" style="display: none;">
+    <h3>Chi tiết Dinh dưỡng</h3>
+    <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
+    <p>Protein: <span id="total-protein">0</span>g | Carb: <span id="total-carbs">0</span>g | Fat: <span id="total-fat">0</span>g</p>
+    <h4>Món ăn: <span id="analyzed-food-name"></span></h4>
+    <div class="chart-container" style="height: 200px;"><canvas id="macroChart"></canvas></div>
+    <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
+</div>
                 <section id="analysis-page" class="page" style="display:none;">
                     <div class="tab-nav">
                         <button onclick="showAnalysisTab('tab-image')" class="tab-btn active" id="tab-image-btn">Tải/Chụp Ảnh</button>
                         <button onclick="showAnalysisTab('tab-recipe')" class="tab-btn" id="tab-recipe-btn">Phân tích Công thức</button>
                     </div>
                     <div id="tab-image" class="analysis-tab active">
-                        <p>Chọn ảnh hoặc chụp trực tiếp. (Tính năng AI được **mô phỏng** bằng nhập liệu)</p>
-                        <input type="file" id="photo-upload" accept="image/*" capture="camera">
-                        <div id="mock-recognition-input" style="display: none;"><label for="mock-food-name">Xác nhận/Nhập tên món ăn:</label><select id="mock-food-name"></select><button id="analyze-button" class="primary-btn">Phân Tích Dinh Dưỡng</button></div>
-                    </div>
-                    <div id="tab-recipe" class="analysis-tab" style="display:none;">
-                        <p>Nhập nguyên liệu (tên và khối lượng bằng gram).</p>
-                        <table id="recipe-input-table"><thead><tr><th>Nguyên liệu</th><th>Khối lượng (g)</th><th>Hành động</th></tr></thead><tbody></tbody></table>
-                        <button id="add-ingredient-btn" class="secondary-btn">+ Thêm Nguyên Liệu</button><button id="analyze-recipe-btn" class="primary-btn">Tính Tổng Dinh Dưỡng</button>
-                    </div>
-                    <div id="analysis-result-area" class="result-box" style="display: none;">
-                        <h3>Chi tiết Dinh dưỡng</h3>
-                        <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
-                        <p>Protein: <span id="total-protein">0</span>g | Carb: <span id="total-carbs">0</span>g | Fat: <span id="total-fat">0</span>g</p>
-                        <h4>Món ăn: <span id="analyzed-food-name"></span></h4>
-                        <div class="chart-container" style="block-size: 200px;"><canvas id="macroChart"></canvas></div>
-                        <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
-                    </div>
+    <p>Chọn ảnh món ăn bạn muốn phân tích. AI sẽ nhận diện và đưa ra các gợi ý dinh dưỡng.</p>
+    
+    <div class="input-group">
+        <label for="photo-upload">Tải ảnh lên từ thiết bị hoặc chụp ảnh mới:</label>
+        <input type="file" id="photo-upload" accept="image/*" capture="camera">
+    </div>
+    
+    <div id="image-analysis-steps">
+        <img id="image-preview" src="#" alt="Xem trước ảnh" style="display:none; max-width: 300px; margin-top: 15px; border-radius: 8px;"/>
+        <div id="api-status-message" style="margin-top: 15px; font-weight: bold;"></div>
+        <div id="food-suggestions" style="margin-top: 15px;"></div>
+    </div>
+
+    <div id="portion-control" style="display:none; margin-top: 20px; padding: 20px; background-color: #f4f7f6; border-radius: 8px; border: 1px solid #e0e0e0;">
+        <h4>Điều chỉnh khẩu phần cho: <span id="selected-food-name" style="color: #28a745;"></span></h4>
+        <div class="input-group">
+            <label for="portion-input">Khối lượng ước tính (gram):</label>
+            <input type="number" id="portion-input" value="350">
+        </div>
+        <button id="confirm-analysis-btn" class="primary-btn">Phân Tích Dinh Dưỡng</button>
+    </div>
                 </section>
 
                 <section id="planner-page" class="page" style="display:none;">
-                    <h3>Kế Hoạch Bữa Ăn</h3>
-                    <p>Trang này sẽ hiển thị kế hoạch ăn uống hàng ngày/tuần dựa trên mục tiêu của bạn.</p>
+                    <h3>Danh Mục Kế Hoạch Ăn Uống (Tham Khảo)</h3>
+                    <p>Chọn một trong các thực đơn mẫu để tham khảo hoặc tạo kế hoạch của riêng bạn. (Bao gồm thực đơn tham khảo 7 ngày chuẩn Việt)</p>
+                    
+                    <div id="meal-category-container" class="meal-category-grid">
+                    </div>
+                    
+                    <h3 style="margin-top: 40px;">Lên Kế Hoạch Ăn Uống Cá Nhân (7 Ngày)</h3>
+                    <p>Tự điền thực đơn của bạn vào bảng sau. Nhấn **Lưu** sau khi hoàn tất. (Tương tự file Weekly Meal Tracker)</p>
+                    
+                    <div class="weekly-planner-wrapper">
+                        <table id="weekly-planner-table" class="weekly-planner-table">
+                            <thead>
+                                <tr id="table-day-headers">
+                                    <th>Bữa Ăn</th>
+                                </tr>
+                            </thead>
+                            <tbody id="planner-table-body">
+                                </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="planner-actions">
+                        <button id="save-weekly-plan-btn" class="primary-btn">Lưu Kế Hoạch Tuần</button>
+                        <button id="export-weekly-plan-btn" class="secondary-btn">Xuất File CSV</button>
+                    </div>
                 </section>
                 
                 <section id="history-page" class="page" style="display:none;">
@@ -114,8 +197,7 @@
                     <pre id="admin-data-display">Đang tải data.json...</pre>
                 </section>
             </div>
-             <!-- Nút cuộn lên đầu trang -->
-            <button id="scrollToTopBtn" title="Lên đầu trang">
+             <button id="scrollToTopBtn" title="Lên đầu trang">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
         </main>
@@ -123,4 +205,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
