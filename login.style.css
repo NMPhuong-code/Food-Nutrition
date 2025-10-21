@@ -3,7 +3,7 @@
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
+    block-size: 100%;
     font-family: 'Roboto', sans-serif;
     display: flex;
     justify-content: center;
@@ -13,11 +13,11 @@ body, html {
 
 .background-image {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=2080&auto=format&fit=crop') no-repeat center center/cover;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    background: url('https://i.pinimg.com/1200x/ed/8f/da/ed8fda5a39e7a61f28495ec7db17c2d0.jpg') no-repeat center center/cover;
     filter: blur(5px) brightness(0.7);
     z-index: -1;
 }
@@ -26,8 +26,8 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
 }
 
 .login-card {
@@ -36,20 +36,21 @@ body, html {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 100%;
-    max-width: 400px;
+    inline-size: 100%;
+    max-inline-size: 400px;
 }
 
 h1 {
     font-family: 'Montserrat', sans-serif;
     color: #28a745;
-    margin-bottom: 10px;
+    margin-block-end: 10px;
     font-size: 2.5em;
+    font-family: 'Montserrat', sans-serif;
 }
 
 p {
     color: #666;
-    margin-bottom: 30px;
+    margin-block-end: 30px;
 }
 
 .role-btn {
@@ -57,7 +58,7 @@ p {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    width: 100%;
+    inline-size: 100%;
     padding: 15px;
     border: none;
     border-radius: 8px;
@@ -66,7 +67,7 @@ p {
     font-weight: 500;
     cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-    margin-bottom: 15px;
+    margin-block-end: 15px;
 }
 
 .role-btn:hover {
@@ -80,10 +81,10 @@ p {
 /* Modal Styles */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    inline-size: 100%;
+    block-size: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
@@ -96,8 +97,8 @@ p {
     padding: 30px 40px;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
+    inline-size: 100%;
+    max-inline-size: 400px;
     position: relative;
     animation: fadeIn 0.3s ease-out;
 }
@@ -109,8 +110,8 @@ p {
 
 .close-button {
     position: absolute;
-    top: 15px;
-    right: 20px;
+    inset-block-start: 15px;
+    inset-inline-end: 20px;
     font-size: 1.8em;
     color: #aaa;
     cursor: pointer;
@@ -121,22 +122,22 @@ p {
 .modal-content h2 {
     text-align: center;
     color: #333;
-    margin-bottom: 25px;
+    margin-block-end: 25px;
 }
 
 .input-group {
-    margin-bottom: 20px;
+    margin-block-end: 20px;
 }
 
 .input-group label {
     display: block;
     color: #555;
-    margin-bottom: 8px;
+    margin-block-end: 8px;
     font-weight: 500;
 }
 
 .input-group input {
-    width: 100%;
+    inline-size: 100%;
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -150,12 +151,12 @@ p {
 .input-group small {
     font-size: 0.8em;
     color: #888;
-    margin-top: 5px;
+    margin-block-start: 5px;
     display: block;
 }
 
 .submit-btn {
-    width: 100%;
+    inline-size: 100%;
     padding: 15px;
     border: none;
     border-radius: 8px;
@@ -170,7 +171,7 @@ p {
 
 .form-switch-text {
     text-align: center;
-    margin-top: 20px;
+    margin-block-start: 20px;
     font-size: 0.9em;
 }
 .form-switch-text a {
@@ -184,8 +185,8 @@ p {
     color: #dc3545;
     font-size: 0.9em;
     text-align: center;
-    min-height: 20px;
-    margin-bottom: 15px;
+    min-block-size: 20px;
+    margin-block-end: 15px;
 }
 
 /* Captcha */
@@ -193,7 +194,7 @@ p {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-block-end: 10px;
 }
 #captcha-code {
     background-color: #f0f0f0;
@@ -209,8 +210,8 @@ p {
     background: none;
     border: 1px solid #ccc;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    inline-size: 40px;
+    block-size: 40px;
     cursor: pointer;
     color: #555;
     font-size: 1em;
@@ -228,9 +229,9 @@ p {
 
 .toggle-password {
     position: absolute;
-    right: 15px;
+    inset-inline-end: 15px;
     /* Vertically align with the input field */
-    bottom: 12px;
+    inset-block-end: 12px;
     cursor: pointer;
     color: #aaa;
     transition: color 0.2s;
@@ -238,7 +239,7 @@ p {
 
 .password-group small + .toggle-password {
     /* Adjust position if there is a <small> tag */
-    bottom: 32px;
+    inset-block-end: 32px;
 }
 
 .toggle-password:hover {

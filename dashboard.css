@@ -34,15 +34,22 @@ body, html {
 
 #sidebar-nav { list-style: none; }
 
-/* Chức năng */
+/* Chức năng (Đã dọn dẹp) */
 #sidebar-nav .nav-btn {
     display: flex; align-items: center; inline-size: 100%; padding: 15px; margin-block-end: 10px;
     background: none; border: none; border-radius: 8px; cursor: pointer; text-align: start;
     font-size: 1em; color: #555; font-weight: 500; transition: all 0.3s; gap: 15px;
 }
 
-#sidebar-nav .nav-btn.active, #sidebar-nav .nav-btn:hover { background-color: #28a745; color: #fff; }
-#sidebar-nav .nav-btn i { font-size: 1.2em; }
+#sidebar-nav .nav-btn.active, 
+#sidebar-nav .nav-btn:hover { 
+    background-color: #28a745; color: #fff; 
+}
+
+#sidebar-nav .nav-btn i { 
+    font-size: 1.2em; 
+}
+
 
 /* Main Content */
 #main-content { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
@@ -70,11 +77,12 @@ body, html {
 .page-content-wrapper { overflow-y: auto; padding: 30px; flex-grow: 1; }
 .page h3 { font-family: 'Montserrat', sans-serif; margin-block-end: 20px; font-size: 1.5em; }
 
-/* Generic styles */
+/* Generic styles (Đã thêm input[type="email"], textarea) */
 .input-group { margin-block-end: 20px; }
 .input-group label { display: block; margin-block-end: 8px; font-weight: 500; }
-input[type="number"], input[type="text"], select, input[type="file"] {
+input[type="number"], input[type="text"], input[type="email"], select, input[type="file"], textarea {
     inline-size: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em;
+    font-family: 'Roboto', sans-serif; /* Đảm bảo font nhất quán */
 }
 .primary-btn { background-color: #007bff; color: white; padding: 12px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; }
 .secondary-btn { background-color: #6c757d; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; }
@@ -117,4 +125,449 @@ th { background-color: #f2f2f2; }
 
 #scrollToTopBtn:hover {
     background-color: #218838;
+}
+
+/* --- BMI Page Specific Styles (Updated) --- */
+.bmi-content-wrapper {
+    display: flex;
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.bmi-explanation {
+    flex: 2; /* Chiếm 2/3 không gian */
+}
+
+.bmi-result-display {
+    flex: 1; /* Chiếm 1/3 không gian */
+}
+
+.bmi-explanation h2, .bmi-result-display h3 {
+    color: #28a745; /* Màu xanh lá cây cho tiêu đề chính */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6em;
+    margin-block-end: 15px;
+}
+
+.bmi-explanation h4 {
+    margin-block-start: 20px;
+    margin-block-end: 10px;
+    color: #333;
+    font-size: 1.2em;
+}
+
+.explanation-box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-block-end: 20px;
+}
+
+.decoration-image {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.decoration-image img {
+    max-inline-size: 80%;
+    block-size: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* BMI Visualizer Card (Mô phỏng đồng hồ đo) */
+.bmi-visualizer-card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    text-align: center;
+    margin-block-end: 20px;
+}
+
+.bmi-label {
+    font-size: 0.9em;
+    color: #6c757d;
+    margin-block-end: 10px;
+}
+
+.bmi-gauge {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    block-size: 120px;
+}
+
+.bmi-main-value {
+    font-size: 4em;
+    font-weight: 700;
+    color: #333;
+    line-height: 1;
+}
+
+.bmi-status-bar {
+    padding: 10px;
+    border-radius: 6px;
+    margin-block-start: 15px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: #6c757d; 
+}
+
+.bmi-rating-guide img {
+    inline-size: 100%;
+    block-size: auto;
+    margin-block-start: 20px;
+    border-radius: 8px;
+}
+
+/* Input Area styling */
+.bmi-input-area {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.bmi-input-area h3 {
+    margin-block-start: 0;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* --- Planner Page Specific Styles (from previous step) --- */
+
+.meal-category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-block-end: 30px;
+}
+
+.category-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    align-items: center;
+}
+
+.category-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.category-card img {
+    inline-size: 100px;
+    block-size: 100px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.category-info {
+    padding: 15px;
+}
+
+.category-info h4 {
+    font-size: 1.1em;
+    margin-block-end: 5px;
+    color: #28a745;
+}
+
+.category-info p {
+    font-size: 0.9em;
+    color: #6c757d;
+}
+
+.weekly-planner-wrapper {
+    overflow-x: auto; 
+    margin-block-end: 20px;
+}
+
+.weekly-planner-table {
+    min-inline-size: 800px; 
+    border-collapse: collapse;
+}
+
+.weekly-planner-table th, .weekly-planner-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    min-inline-size: 100px;
+}
+
+.weekly-planner-table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.weekly-planner-table td {
+    background-color: #fff;
+}
+
+.weekly-planner-table .meal-type-header {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: 500;
+}
+
+.weekly-planner-table input[type="text"] {
+    inline-size: 100%;
+    padding: 5px;
+    border: none;
+    background: none;
+    text-align: center;
+}
+
+.planner-actions {
+    display: flex;
+    gap: 15px;
+    margin-block-start: 10px;
+}
+
+/* Style cho nút Đăng nhập trên header của dashboard (cho guest) */
+.login-button-dash {
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+.login-button-dash:hover {
+    background-color: #0056b3;
+}
+
+/* === CSS CHO BLOG VÀ CONTACT ĐÃ CHUYỂN VÀO ĐÂY === */
+
+/* --- Trang Contact (Trong Dashboard) --- */
+.contact-section {
+    padding: 20px 0; /* Giảm padding cho vừa dashboard */
+}
+.contact-wrapper {
+    display: flex;
+    gap: 40px;
+}
+.contact-form {
+    flex: 1; /* 50% */
+}
+.contact-map {
+    flex: 1; /* 50% */
+    border-radius: 8px;
+    overflow: hidden;
+}
+.contact-form h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    margin-block-end: 20px;
+}
+/* .contact-form .input-group đã được định nghĩa ở trên */
+/* .contact-form .input-group label đã được định nghĩa ở trên */
+
+.contact-submit-btn {
+    background-color: #007bff; /* Màu xanh dương cho nút */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+.contact-submit-btn:hover {
+    background-color: #0056b3;
+}
+
+/* --- Trang Blog List (Trong Dashboard) --- */
+.blog-section {
+    padding: 20px 0; /* Giảm padding */
+}
+.blog-grid {
+    display: grid;
+    /* Dùng auto-fit để tự động xuống hàng trên màn hình nhỏ */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+.post-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+.post-image-wrapper {
+    inline-size: 100%;
+    block-size: 180px; /* Chiều cao cố định cho ảnh */
+    overflow: hidden;
+}
+.post-image {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover; /* Đảm bảo ảnh lấp đầy */
+}
+.post-content {
+    padding: 20px;
+}
+.post-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2em;
+    margin-block-end: 10px;
+    /* Giới hạn 2 dòng */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-block-size: 2.4em; /* 1.2em * 2 */
+}
+.post-snippet {
+    font-size: 0.9em;
+    color: #666;
+    /* Giới hạn 3 dòng */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- CSS cho Trang Admin Mới --- */
+/* Dùng biến CSS (CSS Variable) để lưu màu chủ đạo.
+  Mặc định là màu xanh #28a745.
+*/
+:root {
+    --primary-color: #28a745;
+    --primary-color-dark: #218838;
+}
+
+/* Áp dụng màu chủ đạo cho các thành phần hiện có */
+#sidebar .logo {
+    color: var(--primary-color);
+}
+#sidebar-nav .nav-btn.active, 
+#sidebar-nav .nav-btn:hover { 
+    background-color: var(--primary-color);
+}
+#scrollToTopBtn {
+    background-color: var(--primary-color);
+}
+#scrollToTopBtn:hover {
+    background-color: var(--primary-color-dark); /* Màu tối hơn khi hover */
+}
+.bmi-explanation h2, .bmi-result-display h3 {
+    color: var(--primary-color);
+}
+.category-info h4 {
+    color: var(--primary-color);
+}
+
+/* Bố cục trang Admin */
+.admin-grid {
+    display: grid;
+    /* Tự động chia cột, mỗi cột tối thiểu 400px */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+}
+
+.admin-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.admin-card h3 {
+    font-family: 'Montserrat', sans-serif;
+    margin-block-start: 0;
+    margin-block-end: 20px;
+    /* Tiêu đề sẽ đổi màu theo màu chủ đạo */
+    border-block-end: 3px solid var(--primary-color);
+    padding-block-end: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ô nhập màu */
+input[type="color"] {
+    block-size: 45px;
+    padding: 5px;
+    inline-size: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Thông báo mô phỏng */
+.mockup-notice {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #888;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-block-end: 15px;
+    border-inline-start: 3px solid #ffa500; /* Màu cam */
+}
+
+/* Bảng mô phỏng */
+.admin-table {
+    inline-size: 100%;
+    margin-block-end: 20px;
+    border-collapse: collapse; /* Gộp viền bảng */
+}
+.admin-table th, .admin-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: start;
+    vertical-align: middle;
+}
+.admin-table th {
+    background-color: #f4f4f4;
+}
+
+/* Nút nhỏ */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.9em;
+    margin-inline-end: 5px;
+}
+.btn-danger {
+    background-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* CSS cho các nút bị vô hiệu hóa (disabled) */
+button:disabled {
+    background-color: #007bff;
+    color: #ffffff;
+    cursor: not-allowed;
+    /*opacity: 0.7;*/
+}
+button:disabled:hover {
+    background-color: #0056b3;
+}
+
+.admin-card .primary-btn {
+    display: inline-block; /* Buộc nút hiển thị như một khối */
+    position: relative;    /* Hủy bỏ mọi thuộc tính "position" lạ */
+    margin-top: 15px;      /* Tạo khoảng cách với văn bản bên trên */
 }

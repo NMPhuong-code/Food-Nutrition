@@ -11,37 +11,33 @@
 </head>
 <body>
     <div id="app-container">
-        <!-- Sidebar Navigation -->
         <nav id="sidebar">
             <a href="index.html" class="logo">
                 <i class="fa-solid fa-leaf"></i>
                 <span>Nutrition</span>
             </a>
             <ul id="sidebar-nav">
-                <li><button onclick="showPage('dashboard-page')" class="nav-btn active"><i class="fa-solid fa-table-columns"></i><span>Tổng quan</span></button></li>
+                <li id="dashboard-nav-item"><button onclick="showPage('dashboard-page')" class="nav-btn active"><i class="fa-solid fa-table-columns"></i><span>Tổng quan</span></button></li>
                 <li><button onclick="showPage('bmi-page')" class="nav-btn"><i class="fa-solid fa-arrows-up-down"></i><span>Sức khỏe (BMI)</span></button></li>
                 <li><button onclick="showPage('analysis-page')" class="nav-btn"><i class="fa-solid fa-gear"></i><span>Phân tích</span></button></li>
                 <li><button onclick="showPage('planner-page')" class="nav-btn"><i class="fa-solid fa-calendar-days"></i><span>Kế hoạch</span></button></li>
-                <li><button onclick="showPage('history-page')" class="nav-btn"><i class="fa-solid fa-history"></i><span>Lịch sử & Log</span></button></li>
+                
+                <li><button onclick="showPage('blog-page')" class="nav-btn"><i class="fa-solid fa-newspaper"></i><span>Blog</span></button></li>
+                <li><button onclick="showPage('contact-page')" class="nav-btn"><i class="fa-solid fa-comments"></i><span>Liên hệ</span></button></li>
+                <li id="history-nav-item"><button onclick="showPage('history-page')" class="nav-btn"><i class="fa-solid fa-history"></i><span>Lịch sử & Log</span></button></li>
                 <li id="admin-nav-item" style="display: none;"><button onclick="showPage('admin-page')" class="nav-btn"><i class="fa-solid fa-user-shield"></i><span>Admin</span></button></li>
             </ul>
         </nav>
 
-        <!-- Main Content -->
         <main id="main-content">
-            <!-- Header -->
             <header id="main-header">
                 <h2 id="page-title">Tổng quan</h2>
-                <div class="user-menu-container">
-                    <button id="user-menu-button"><i class="fa-solid fa-user-circle"></i></button>
-                    <div id="user-menu-dropdown" class="user-menu-dropdown">
-                        <!-- JS will populate this -->
+                <div class="user-menu-container" id="dashboard-auth-section">
                     </div>
-                </div>
             </header>
 
-            <!-- Page Content -->
             <div class="page-content-wrapper">
+                
                 <section id="dashboard-page" class="page">
                     <div class="summary-cards">
                         <div class="card"><h4>Mục Tiêu Calo (TDEE)</h4><p><span id="dash-tdee-value">0</span> <span class="unit">kcal/ngày</span></p></div>
@@ -53,21 +49,70 @@
                 </section>
 
                 <section id="bmi-page" class="page" style="display:none;">
-                    <div class="input-group"><label for="height-input">Chiều cao (cm):</label><input type="number" id="height-input" placeholder="Ví dụ: 175" required></div>
-                    <div class="input-group"><label for="weight-input">Cân nặng (kg):</label><input type="number" id="weight-input" placeholder="Ví dụ: 65" required></div>
-                    <div class="input-group">
-                        <label for="goal-select">Mục tiêu:</label>
-                        <select id="goal-select">
-                            <option value="maintain">Duy trì cân nặng</option>
-                            <option value="lose">Giảm cân (-500 Calo)</option>
-                            <option value="gain">Tăng cơ/Tăng cân (+500 Calo)</option>
-                        </select>
-                    </div>
-                    <button id="calculate-bmi-btn" class="primary-btn">Tính BMI & Calo Duy Trì (TDEE)</button>
-                    <div id="bmi-result-area" class="result-box">
-                        <h4>Kết Quả Phân Tích Cơ Bản:</h4>
-                        <p>BMI: <span id="bmi-value" class="highlight">--</span> | Đánh giá: <span id="bmi-status">--</span></p>
-                        <p>Calo Duy Trì (ước tính): <span id="tdee-value" class="highlight">0</span> kcal/ngày</p>
+                    <div class="bmi-content-wrapper">
+        
+                        <div class="bmi-explanation">
+                            <h2>ĐO CHỈ SỐ CÂN NẶNG - CHIỀU CAO (BMI) ONLINE</h2>
+                            
+                            <div class="explanation-box">
+                                <p>BMI không đo lường trực tiếp mỡ của cơ thể nhưng các nghiên cứu đã chứng minh rằng BMI tương quan với đo mỡ trực tiếp. BMI là phương pháp không tốn kém và dễ thực hiện để tầm soát vấn đề sức khoẻ.</p>
+                                <div class="decoration-image">
+                                    <img src="image/BMI.jpg" alt="Thước dây và Kính lúp đo BMI">
+                                </div>
+                                
+                                <h4>1. Sử dụng BMI như thế nào?</h4>
+                                <p>BMI được sử dụng như là một công cụ tầm soát để xác định trọng lượng thích hợp cho người lớn. Tuy nhiên, BMI không phải là công cụ chẩn đoán. Ví dụ, một người có chỉ số BMI cao, để xác định trọng lượng có phải là một nguy cơ cho sức khoẻ không thì các bác sĩ cần thực hiện thêm các đánh giá khác. Những đánh giá này gồm đo độ dày nếp da, đánh giá chế độ ăn, hoạt động thể lực, tiền sử gia đình và các sàng lọc sức khoẻ khác.</p>
+                                
+                                <h4>2. Tại sao Cơ quan kiểm soát bệnh tật Hoa Kỳ - CDC sử dụng BMI?</h4>
+                                <p>Tính chỉ số BMI là một phương pháp tốt nhất để đánh giá thừa cân và béo phì cho một quần thể dân chúng. Để tính chỉ số BMI, người ta chỉ yêu cầu đo chiều cao và cân nặng, không tốn kém và dễ thực hiện. Sử dụng chỉ số BMI cho phép người ta so sánh tình trạng cân nặng của họ với quần thể nói chung. Công thức tính BMI theo đơn vị kilograms và mét.</p>
+                            </div>
+                            
+                            <div class="bmi-input-area">
+                                <h3>Nhập Thông Số Tính Toán</h3>
+                                <div class="input-group"><label for="height-input">Chiều cao (cm):</label><input type="number" id="height-input" placeholder="Ví dụ: 175" required></div>
+                                <div class="input-group"><label for="weight-input">Cân nặng (kg):</label><input type="number" id="weight-input" placeholder="Ví dụ: 65" required></div>
+                                <div class="input-group">
+                                    <label for="gender-select">Giới tính:</label>
+                                    <select id="gender-select">
+                                        <option value="male">Nam</option>
+                                        <option value="female">Nữ</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label for="goal-select">Mục tiêu Calo:</label>
+                                    <select id="goal-select">
+                                        <option value="maintain">Duy trì cân nặng</option>
+                                        <option value="lose">Giảm cân (-500 Calo)</option>
+                                        <option value="gain">Tăng cơ/Tăng cân (+500 Calo)</option>
+                                    </select>
+                                </div>
+                                <button id="calculate-bmi-btn" class="primary-btn">Tính BMI & Calo Duy Trì (TDEE)</button>
+                            </div>
+                        </div>
+                        
+                        <div class="bmi-result-display">
+                            <h3>Kết Quả & Phân Loại BMI</h3>
+
+                            <div class="bmi-visualizer-card">
+                                <p class="bmi-label">Chỉ số BMI của bạn là:</p>
+                                <div class="bmi-gauge">
+                                    <span id="bmi-value-large" class="bmi-main-value">--</span>
+                                </div>
+                                <div class="bmi-status-bar" id="bmi-status-bar">
+                                    <span id="bmi-status-large" class="status-text">--</span>
+                                </div>
+                                
+                                <div class="bmi-rating-guide">
+                                    <img src="image/BODY_BMI.jpg" alt="Phân loại chỉ số BMI" />
+                                </div>
+                            </div>
+
+                            <div id="bmi-result-area" class="result-box">
+                                <h4>Phân Tích Calo Mục Tiêu:</h4>
+                                <p>Đánh giá BMI: <span id="bmi-status" class="highlight">--</span></p>
+                                <p>Calo Duy Trì (ước tính): <span id="tdee-value" class="highlight">0</span> kcal/ngày</p>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -97,8 +142,31 @@
                 </section>
 
                 <section id="planner-page" class="page" style="display:none;">
-                    <h3>Kế Hoạch Bữa Ăn</h3>
-                    <p>Trang này sẽ hiển thị kế hoạch ăn uống hàng ngày/tuần dựa trên mục tiêu của bạn.</p>
+                    <h3>Danh Mục Kế Hoạch Ăn Uống (Tham Khảo)</h3>
+                    <p>Chọn một trong các thực đơn mẫu để tham khảo hoặc tạo kế hoạch của riêng bạn. (Bao gồm thực đơn tham khảo 7 ngày chuẩn Việt)</p>
+                    
+                    <div id="meal-category-container" class="meal-category-grid">
+                    </div>
+                    
+                    <h3 style="margin-block-start: 40px;">Lên Kế Hoạch Ăn Uống Cá Nhân (7 Ngày)</h3>
+                    <p>Tự điền thực đơn của bạn vào bảng sau. Nhấn **Lưu** sau khi hoàn tất. (Tương tự file Weekly Meal Tracker)</p>
+                    
+                    <div class="weekly-planner-wrapper">
+                        <table id="weekly-planner-table" class="weekly-planner-table">
+                            <thead>
+                                <tr id="table-day-headers">
+                                    <th>Bữa Ăn</th>
+                                </tr>
+                            </thead>
+                            <tbody id="planner-table-body">
+                                </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="planner-actions">
+                        <button id="save-weekly-plan-btn" class="primary-btn">Lưu Kế Hoạch Tuần</button>
+                        <button id="export-weekly-plan-btn" class="secondary-btn">Xuất File CSV</button>
+                    </div>
                 </section>
                 
                 <section id="history-page" class="page" style="display:none;">
@@ -108,14 +176,213 @@
                     <button id="export-csv-btn" class="secondary-btn">Xuất Dữ liệu CSV</button>
                 </section>
                 
-                <section id="admin-page" class="page" style="display:none;">
+                <!-- <section id="admin-page" class="page" style="display:none;">
                     <h3>Cổng Quản Trị</h3>
                     <p>Admin có thể xem và chỉnh sửa dữ liệu mẫu (`data.json`) tại đây.</p>
                     <pre id="admin-data-display">Đang tải data.json...</pre>
+                </section> -->
+                <section id="admin-page" class="page" style="display:none;">
+
+                    <div class="admin-grid">
+
+                        <div class="admin-card">
+                            <h3><i class="fa-solid fa-palette"></i> Cài đặt Trang</h3>
+                            <div class="input-group">
+                                <label for="admin-color-picker">Chọn màu chủ đạo của trang:</label>
+                                <input type="color" id="admin-color-picker" value="#28a745">
+                                <small>Màu này sẽ áp dụng cho logo, nút active, và các tiêu đề.</small>
+                            </div>
+                            <button id="admin-save-settings-btn" class="primary-btn">Lưu Cài Đặt</button>
+                        </div>
+
+                        <div class="admin-card">
+                            <h3><i class="fa-solid fa-inbox"></i> Tin nhắn Người dùng</h3>
+                            <p>Tất cả tin nhắn từ người dùng sẽ được tự động gửi đến email của Admin qua dịch vụ Formspree.</p>
+                            <p>  </p>
+                            <a href="https://formspree.io/dashboard" target="_blank" class="primary-btn">Đến Formspree Dashboard</a>
+                        </div>
+
+                        <div class="admin-card">
+                            <h3><i class="fa-solid fa-newspaper"></i> Quản lý Blog</h3>
+                            <p class="mockup-notice">Giao diện mô phỏng. Các nút bên dưới chưa sử dụng được.</p>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tiêu đề bài viết</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cách làm bữa ăn đơn giản...</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hiểu về Protein, Carb và Fat</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Top 5 thực phẩm giàu Sắt...</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Xây dựng chế độ ăn cho người mới</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="primary-btn" disabled>+ Thêm bài viết mới</button>
+                        </div>
+
+                        <div class="admin-card">
+                            <h3><i class="fa-solid fa-calendar-days"></i> Quản lý Kế hoạch</h3>
+                            <p class="mockup-notice">Giao diện mô phỏng. Các nút bên dưới chưa sử dụng được.</p>
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tên kế hoạch</th>
+                                        <th>Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>7 Days Diet - Thuần Việt</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>7 Days Flat Belly Diet</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Your Best Body Meal Plan</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Easy eating play for Weight Loss</td>
+                                        <td>
+                                            <button class="secondary-btn btn-sm" disabled>Sửa</button>
+                                            <button class="secondary-btn btn-sm btn-danger" disabled>Xóa</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="primary-btn" disabled>+ Thêm kế hoạch mới</button>
+                        </div>
+
+                    </div>
+                    </section>
+
+                    <!--Kết thúc chức năng Admin-->
+
+                <section id="blog-page" class="page" style="display:none;">
+                    <div class="blog-section">
+                        <div class="blog-grid">
+                            
+                            <a href="https://memart.vn/tin-tuc/suc-khoe-6/cong-thuc-1-bua-an-day-du-dinh-duong-de-dang-va-nhanh-chong-vi-cb.html" 
+                            class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://i.pinimg.com/1200x/79/f7/b2/79f7b2bfdc23418c084753b247588b4f.jpg" alt="Bữa ăn đơn giản" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Cách làm bữa ăn đơn giản mà đủ dinh dưỡng</h3>
+                                    <p class="post-snippet">Trong cuộc sống bận rộn, một bữa ăn nhanh gọn, đơn giản nhưng vẫn đảm bảo... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+
+                            <a href="https://fitfood.vn/tin-tuc/carb-protein-va-chat-beo-cac-nguyen-tac-cho-mot-bua-an-can-doi" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" alt="Kiến thức dinh dưỡng" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Hiểu về Protein, Carb và Fat</h3>
+                                    <p class="post-snippet">Các chất dinh dưỡng đa lượng là nền tảng của mọi chế độ ăn. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+
+                            <a href="https://nutrihome.vn/thuc-pham-giau-sat/" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600" alt="Thực phẩm" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Top 5 thực phẩm giàu Sắt cho người thiếu máu</h3>
+                                    <p class="post-snippet">Thiếu sắt có thể gây mệt mỏi, chóng mặt. Bổ sung ngay 5 loại thực phẩm... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+
+                            <a href="https://www.coolmate.me/blog/che-do-an-tang-co-giam-mo-3861" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://i.pinimg.com/1200x/3f/66/a9/3f66a9bc8d0a3d4f89985bd4c127cab7.jpg" alt="Chế độ ăn" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Xây dựng chế độ ăn giảm mỡ cho người mới</h3>
+                                    <p class="post-snippet">Nguyên tắc cơ bản của việc giảm mỡ là calo-in < calo-out. Bắt đầu từ... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+                            
+                        </div>
+                    </div>
                 </section>
-            </div>
-             <!-- Nút cuộn lên đầu trang -->
-            <button id="scrollToTopBtn" title="Lên đầu trang">
+                <section id="contact-page" class="page" style="display:none;">
+                    <div class="contact-section">
+                        <div class="contact-wrapper">
+                            
+                            <div class="contact-form">
+                                <h3>Gửi tin nhắn cho chúng tôi</h3>
+                                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                                    <div class="input-group">
+                                        <label for="contact-name">Name</label>
+                                        <input type="text" id="contact-name" name="name" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="contact-email">Email Address</label>
+                                        <input type="email" id="contact-email" name="email" required>
+                                    </div>
+                                    <div class="input-group">
+                                        <label for="contact-message">Message</label>
+                                        <textarea id="contact-message" name="message" rows="8" required></textarea>
+                                    </div>
+                                    <button type="submit" class="contact-submit-btn">Send Message</button>
+                                </form>
+                            </div>
+                            
+                            <div class="contact-map">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.8558811937783!2d106.70271217414067!3d10.745588689401325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f75fed4da3d%3A0xecbdf1627daae4d4!2zMTIgU-G7kSA2NSwgVMOibiBRdXksIFF14bqtbiA3LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1761023607834!5m2!1svi!2s" 
+                                    width="600" 
+                                    height="450" 
+                                    style="border:0;" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+                </div>
+             <button id="scrollToTopBtn" title="Lên đầu trang">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>
         </main>
@@ -123,4 +390,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-

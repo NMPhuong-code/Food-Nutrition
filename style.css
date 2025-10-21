@@ -233,38 +233,60 @@ body {
     margin-block-end: 20px;
 }
 
-/* Scroll to Top Button */
-#scrollToTopBtn {
-    display: none; /* Ẩn ban đầu */
-    position: fixed;
-    inset-block-end: 30px;
-    inset-inline-end: 30px;
-    z-index: 99;
-    border: none;
-    outline: none;
-    background-color: #28a745;
+/* Tiêu đề chung cho các trang con (Dùng cho blog-post-detail.html) */
+.page-hero {
+    padding: 40px 0;
+    background-color: #333; /* Màu nền tối giống ảnh */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=1200');
+    background-size: cover;
+    background-position: center;
     color: white;
-    cursor: pointer;
-    padding: 0;
-    border-radius: 50%;
-    inline-size: 50px;
-    block-size: 50px;
-    font-size: 18px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: opacity 0.3s, background-color 0.3s;
+    text-align: center;
+}
+.page-hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5em;
+    margin-block-end: 5px;
+}
+.page-hero p {
+    color: #ddd;
+    font-size: 0.9em;
 }
 
-#scrollToTopBtn:hover {
-    background-color: #218838;
-}
 
-/* Active state for navigation */
-.main-nav a.active {
-    color: #28a745;
-    font-weight: bold;
+/* --- Trang Blog Post Detail (Dùng cho blog-post-detail.html) --- */
+.blog-post-section {
+    padding: 60px 0;
+    background-color: #fff;
 }
-
-.main-nav a.active::after {
+.blog-post-content {
+    max-inline-size: 800px; /* Giới hạn chiều rộng nội dung */
+    margin: 0 auto;
+}
+.post-main-image {
     inline-size: 100%;
+    block-size: auto;
+    border-radius: 8px;
+    margin-block-end: 30px;
 }
-/* END: Đoạn mã thêm vào */
+.blog-post-content p {
+    margin-block-end: 20px;
+    line-height: 1.7;
+    font-size: 1.1em;
+    color: #444;
+}
+.blog-post-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6em;
+    margin-block-start: 40px;
+    margin-block-end: 20px;
+}
+.blog-post-content ul {
+    margin-block-end: 20px;
+    padding-inline-start: 30px;
+}
+.blog-post-content li {
+    line-height: 1.7;
+    font-size: 1.1em;
+    margin-block-end: 10px;
+}
