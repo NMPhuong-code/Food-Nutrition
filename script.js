@@ -92,6 +92,7 @@ window.onclick = function(event) {
 let nutritionData = {};
 let macroChart;
 let progressChart;
+let currentFoodId = null;
 
 function setupDashboardPage() {
     // Không cần kiểm tra userRole ở đây nữa, cho phép guest truy cập
@@ -189,65 +190,40 @@ function initializeDashboardUI() {
     }
 }
 
-<<<<<<< HEAD
+// THAY THẾ TOÀN BỘ KHỐI XUNG ĐỘT BẰNG CODE NÀY
 
+// THAY THẾ TOÀN BỘ CÁC PHIÊN BẢN CŨ CỦA HÀM NÀY BẰNG HÀM NÀY
 function initDashboardEventListeners() {
-    // Existing listeners
-    document.getElementById('calculate-bmi-btn').addEventListener('click', calculateBMI);
-    document.getElementById('photo-upload').addEventListener('change', handleImageUpload);
-    document.getElementById('analyze-button').addEventListener('click', analyzeDishFromMock);
-    document.getElementById('add-ingredient-btn').addEventListener('click', addIngredientRow);
-    document.getElementById('analyze-recipe-btn').addEventListener('click', analyzeRecipe);
-    document.getElementById('save-meal-btn').addEventListener('click', saveAnalyzedMeal);
-    
-    // Nút export CSV chỉ có trên trang history
-    const exportCsvBtn = document.getElementById('export-csv-btn');
-    if (exportCsvBtn) exportCsvBtn.addEventListener('click', exportHistoryToCSV);
-
-    // NEW PLANNER LISTENERS
-    const savePlanBtn = document.getElementById('save-weekly-plan-btn');
-    if (savePlanBtn) savePlanBtn.addEventListener('click', saveWeeklyPlan);
-    
-    const exportPlanBtn = document.getElementById('export-weekly-plan-btn');
-    if (exportPlanBtn) exportPlanBtn.addEventListener('click', exportWeeklyPlanToCSV);
-
-    // === THÊM KHỐI CODE MỚI NÀY VÀO ===
-    // ADMIN SETTINGS LISTENERS
-    const saveSettingsBtn = document.getElementById('admin-save-settings-btn');
-    if (saveSettingsBtn) {
-        saveSettingsBtn.addEventListener('click', saveAdminSettings);
-    }
-    // Đặt giá trị cho ô chọn màu (nếu nó tồn tại)
-    const colorPicker = document.getElementById('admin-color-picker');
-    const savedColor = localStorage.getItem('siteThemeColor');
-    if (colorPicker && savedColor) {
-        colorPicker.value = savedColor;
-    }
-    // === KẾT THÚC THÊM ===
-=======
-// THAY THẾ TOÀN BỘ HÀM CŨ BẰNG HÀM MỚI NÀY
-function initDashboardEventListeners() {
-    // Hàm này sẽ kiểm tra nếu phần tử tồn tại trước khi thêm sự kiện
+    // Hàm trợ giúp để gắn sự kiện an toàn (ĐÂY LÀ HÀM BỊ THIẾU)
     const addSafeListener = (id, event, handler) => {
         const element = document.getElementById(id);
         if (element) {
             element.addEventListener(event, handler);
         }
     };
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 
     // Gắn các sự kiện một cách an toàn
     addSafeListener('calculate-bmi-btn', 'click', calculateBMI);
     addSafeListener('photo-upload', 'change', handleImageUpload);
-    addSafeListener('confirm-analysis-btn', 'click', confirmAndAnalyzeNutrition);
+    addSafeListener('confirm-analysis-btn', 'click', confirmAndAnalyzeNutrition); // Dùng nút mới
     addSafeListener('add-ingredient-btn', 'click', addIngredientRow);
     addSafeListener('analyze-recipe-btn', 'click', analyzeRecipe);
     addSafeListener('save-meal-btn', 'click', saveAnalyzedMeal);
     addSafeListener('export-csv-btn', 'click', exportHistoryToCSV);
     addSafeListener('save-weekly-plan-btn', 'click', saveWeeklyPlan);
-    addSafeListener('export-weekly-plan-btn', 'click', exportWeeklyPlanToCSV);
+    addSafeSafeListener('export-weekly-plan-btn', 'click', exportWeeklyPlanToCSV);
 
-    // Scroll to Top Logic (phần này không đổi)
+    // Listener tùy chỉnh của bạn được giữ lại
+    addSafeListener('admin-save-settings-btn', 'click', saveAdminSettings);
+
+    // Logic color picker của bạn được giữ lại
+    const colorPicker = document.getElementById('admin-color-picker');
+    const savedColor = localStorage.getItem('siteThemeColor');
+    if (colorPicker && savedColor) {
+        colorPicker.value = savedColor;
+    }
+
+    // Scroll to Top Logic
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     const scrollableContent = document.querySelector('.page-content-wrapper');
 
@@ -261,10 +237,11 @@ function initDashboardEventListeners() {
         });
 
         scrollToTopBtn.addEventListener('click', () => {
-            scrollableContent.scrollTo({ insetblockstart: 0, behavior: 'smooth' });
+            scrollableContent.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 }
+
 
 function showPage(pageId) {
     // Ẩn tất cả các trang
@@ -293,138 +270,13 @@ function showPage(pageId) {
     // Tải dữ liệu đặc thù cho từng trang (nếu cần)
     if (pageId === 'dashboard-page') updateDashboard();
     else if (pageId === 'history-page') loadHistory();
-    else if (pageId === 'planner-page') renderPlannerPage(); 
-<<<<<<< HEAD
-    // Không cần load gì cho admin-page vì nó là HTML tĩnh
-}
-
-// --- NEW PLANNER PAGE FUNCTIONS ---
-
-function renderPlannerPage() {
-    renderMealCategories();
-    renderWeeklyPlannerTable();
-    loadWeeklyPlan();
-}
-
-function renderMealCategories() {
-    const container = document.getElementById('meal-category-container');
-    if (!container) return;
-    
-    container.innerHTML = MEAL_CATEGORIES.map(category => `
-        <a href="${category.link}" target="_blank" class="category-card">
-            <img src="${category.image}" alt="${category.title}">
-            <div class="category-info">
-                <h4>${category.title}</h4>
-                <p>${category.description}</p>
-            </div>
-        </a>
-    `).join('');
-}
-
-function renderWeeklyPlannerTable() {
-    const headerRow = document.getElementById('table-day-headers');
-    const tableBody = document.getElementById('planner-table-body');
-    if (!headerRow || !tableBody) return;
-
-    // Render Headers (Thứ Hai -> Chủ Nhật)
-    headerRow.innerHTML = '<th>Bữa Ăn</th>' + WEEK_DAYS.map(day => `<th>${day}</th>`).join('');
-
-    // Render Body (Breakfast, Lunch, Dinner, Snack)
-    tableBody.innerHTML = MEAL_TYPES.map(type => `
-        <tr data-meal-type="${type}">
-            <td class="meal-type-header">${type}</td>
-            ${WEEK_DAYS.map(day => `
-                <td data-day="${day}" data-meal="${type}">
-                    <input type="text" class="meal-input" data-day="${day}" data-meal="${type}" placeholder="Thêm món ăn">
-                </td>
-            `).join('')}
-        </tr>
-    `).join('');
-}
-
-function loadWeeklyPlan() {
-    const savedPlan = JSON.parse(localStorage.getItem('weeklyMealPlan') || '{}');
-    if (Object.keys(savedPlan).length === 0) return;
-
-    MEAL_TYPES.forEach(meal => {
-        WEEK_DAYS.forEach(day => {
-            const input = document.querySelector(`.meal-input[data-day="${day}"][data-meal="${meal}"]`);
-            if (input && savedPlan[day] && savedPlan[day][meal]) {
-                input.value = savedPlan[day][meal];
-            }
-        });
-    });
-}
-
-function saveWeeklyPlan() {
-    const weeklyPlan = {};
-    WEEK_DAYS.forEach(day => {
-        weeklyPlan[day] = {};
-        MEAL_TYPES.forEach(meal => {
-            const input = document.querySelector(`.meal-input[data-day="${day}"][data-meal="${meal}"]`);
-            if (input && input.value.trim()) {
-                weeklyPlan[day][meal] = input.value.trim();
-            }
-        });
-    });
-
-    localStorage.setItem('weeklyMealPlan', JSON.stringify(weeklyPlan));
-    alert('Đã lưu kế hoạch ăn uống tuần này!');
-}
-
-function exportWeeklyPlanToCSV() {
-    const weeklyPlan = JSON.parse(localStorage.getItem('weeklyMealPlan') || '{}');
-    
-    // Nếu chưa lưu lần nào, chỉ xuất khung bảng
-    if (Object.keys(weeklyPlan).length === 0) {
-        // Tự động tạo kế hoạch trống để xuất
-        WEEK_DAYS.forEach(day => weeklyPlan[day] = {});
-    }
-
-    let csv = 'Bữa Ăn,' + WEEK_DAYS.join(',') + '\n';
-
-    MEAL_TYPES.forEach(meal => {
-        let row = `"${meal}"`;
-        WEEK_DAYS.forEach(day => {
-            const dish = weeklyPlan[day] && weeklyPlan[day][meal] ? weeklyPlan[day][meal] : '';
-            // Escape double quotes and enclose in double quotes for CSV safety
-            row += `,"${dish.replace(/"/g, '""')}"`;
-        });
-        csv += row + '\n';
-    });
-
-    const a = document.createElement('a');
-    a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
-    a.target = '_blank';
-    a.download = 'weekly_meal_plan.csv';
-    a.click();
-}
-
-// --- Function to handle tab switching on Analysis Page (Khắc phục lỗi) ---
-function showAnalysisTab(tabId) {
-    document.querySelectorAll('.analysis-tab').forEach(tab => tab.style.display = 'none');
-    
-    // Xử lý nút active trong tab-nav
-    document.querySelectorAll('#analysis-page .tab-btn').forEach(btn => btn.classList.remove('active'));
-    
-    // Hiển thị tab tương ứng
-    const tabElement = document.getElementById(tabId);
-    if (tabElement) {
-        tabElement.style.display = 'block';
-    }
-    
-    // Kích hoạt nút tương ứng
-    const tabButton = document.getElementById(tabId + '-btn');
-    if (tabButton) {
-        tabButton.classList.add('active');
-    }
-}
-
-=======
+    else if (pageId === 'planner-page') renderPlannerPage(); // Không cần load gì cho admin-page vì nó là HTML tĩnh
     else if (pageId === 'admin-page' && sessionStorage.getItem('userRole') === 'admin') {
         document.getElementById('admin-data-display').textContent = JSON.stringify(nutritionData, null, 2);
     }
-}
+} 
+    
+
 
 // --- NEW PLANNER PAGE FUNCTIONS ---
 
@@ -548,7 +400,6 @@ function showAnalysisTab(tabId) {
     }
 }
 
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 // --- ALL DASHBOARD CORE FUNCTIONS ---
 
 /**
@@ -822,7 +673,7 @@ function saveAnalyzedMeal() {
     updateDashboard(); // Cập nhật dashboard (nếu đang ở trang đó)
 }
 // Dán 2 hàm mới này vào file script.js
-let currentFoodId = null; // Biến toàn cục để lưu ID món ăn đã chọn
+//let currentFoodId = null; // Biến toàn cục để lưu ID món ăn đã chọn
 
 function selectFoodSuggestion(foodId, foodName) {
     currentFoodId = foodId;

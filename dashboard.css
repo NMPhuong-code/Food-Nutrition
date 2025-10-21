@@ -146,21 +146,12 @@ th { background-color: #f2f2f2; }
     color: #28a745; /* Màu xanh lá cây cho tiêu đề chính */
     font-family: 'Montserrat', sans-serif;
     font-size: 1.6em;
-<<<<<<< HEAD
     margin-block-end: 15px;
 }
 
 .bmi-explanation h4 {
     margin-block-start: 20px;
     margin-block-end: 10px;
-=======
-    margin-bottom: 15px;
-}
-
-.bmi-explanation h4 {
-    margin-top: 20px;
-    margin-bottom: 10px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
     color: #333;
     font-size: 1.2em;
 }
@@ -170,11 +161,7 @@ th { background-color: #f2f2f2; }
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-<<<<<<< HEAD
     margin-block-end: 20px;
-=======
-    margin-bottom: 20px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 }
 
 .decoration-image {
@@ -183,13 +170,8 @@ th { background-color: #f2f2f2; }
 }
 
 .decoration-image img {
-<<<<<<< HEAD
     max-inline-size: 80%;
     block-size: auto;
-=======
-    max-width: 80%;
-    height: auto;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
@@ -201,32 +183,20 @@ th { background-color: #f2f2f2; }
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     text-align: center;
-<<<<<<< HEAD
     margin-block-end: 20px;
-=======
-    margin-bottom: 20px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 }
 
 .bmi-label {
     font-size: 0.9em;
     color: #6c757d;
-<<<<<<< HEAD
     margin-block-end: 10px;
-=======
-    margin-bottom: 10px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 }
 
 .bmi-gauge {
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
     block-size: 120px;
-=======
-    height: 120px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 }
 
 .bmi-main-value {
@@ -239,11 +209,7 @@ th { background-color: #f2f2f2; }
 .bmi-status-bar {
     padding: 10px;
     border-radius: 6px;
-<<<<<<< HEAD
     margin-block-start: 15px;
-=======
-    margin-top: 15px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
     color: white;
     font-weight: bold;
     font-size: 1.1em;
@@ -251,15 +217,9 @@ th { background-color: #f2f2f2; }
 }
 
 .bmi-rating-guide img {
-<<<<<<< HEAD
     inline-size: 100%;
     block-size: auto;
     margin-block-start: 20px;
-=======
-    width: 100%;
-    height: auto;
-    margin-top: 20px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
     border-radius: 8px;
 }
 
@@ -272,11 +232,7 @@ th { background-color: #f2f2f2; }
 }
 
 .bmi-input-area h3 {
-<<<<<<< HEAD
     margin-block-start: 0;
-=======
-    margin-top: 0;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
     font-size: 1.2em;
     color: #333;
 }
@@ -343,11 +299,7 @@ th { background-color: #f2f2f2; }
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
-<<<<<<< HEAD
     min-inline-size: 100px;
-=======
-    min-width: 100px;
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 }
 
 .weekly-planner-table th {
@@ -379,7 +331,6 @@ th { background-color: #f2f2f2; }
     display: flex;
     gap: 15px;
     margin-block-start: 10px;
-<<<<<<< HEAD
 }
 
 /* Style cho nút Đăng nhập trên header của dashboard (cho guest) */
@@ -618,7 +569,5 @@ button:disabled:hover {
 .admin-card .primary-btn {
     display: inline-block; /* Buộc nút hiển thị như một khối */
     position: relative;    /* Hủy bỏ mọi thuộc tính "position" lạ */
-    margin-top: 15px;      /* Tạo khoảng cách với văn bản bên trên */
-=======
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
+    margin-block-start: 15px;      /* Tạo khoảng cách với văn bản bên trên */
 }

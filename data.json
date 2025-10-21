@@ -6,30 +6,26 @@
   },
   "dishes": {
     "pho_bo": {
-<<<<<<< HEAD
-=======
       "id": "pho_bo",
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Phở Bò (Bát lớn)",
-      "calories": 450,
-      "protein": 30,
-      "carbs": 55,
-      "fat": 12,
+      "serving_default": 450,
+      "serving_unit": "g",
+      "kcal_per_serving": 450,
+      "protein_g": 30,
+      "carbs_g": 55,
+      "fat_g": 12,
       "micronutrients": "Iron, B12"
     },
     "com_ga": {
-<<<<<<< HEAD
-=======
       "id": "com_ga",
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Cơm Gà (Phần trung bình)",
-      "calories": 620,
-      "protein": 40,
-      "carbs": 80,
-      "fat": 20,
+      "serving_default": 400,
+      "serving_unit": "g",
+      "kcal_per_serving": 620,
+      "protein_g": 40,
+      "carbs_g": 80,
+      "fat_g": 20,
       "micronutrients": "Vitamin A, B6"
-<<<<<<< HEAD
-=======
     },
     "berry": {
       "id": "berry",
@@ -41,42 +37,93 @@
       "carbs_g": 59,
       "fat_g": 0.1,
       "source": "OpenFoodFacts"
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
+    },
+    "meat": {
+      "id": "meat",
+      "name": "Tofoo Naked",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 144.359464627151,
+      "protein_g": 16.5,
+      "carbs_g": 1.1,
+      "fat_g": 7.8,
+      "source": "OpenFoodFacts"
+    },
+    "soup": {
+      "id": "soup",
+      "name": "Cream of tomato soup imp",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 54,
+      "protein_g": 0.9,
+      "carbs_g": 7.2,
+      "fat_g": 2.3,
+      "source": "OpenFoodFacts"
+    },
+    "pork": {
+      "id": "pork",
+      "name": "Pork Sausages",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 246,
+      "protein_g": 21.6,
+      "carbs_g": 0,
+      "fat_g": 18,
+      "source": "OpenFoodFacts"
+    },
+    "beef": {
+      "id": "beef",
+      "name": "Organic Beef Stock Cubes 8 Pack",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 7,
+      "protein_g": 0.1,
+      "carbs_g": 0.6,
+      "fat_g": 0.5,
+      "source": "OpenFoodFacts"
+    },
+    "chicken": {
+      "id": "chicken",
+      "name": "Organic Chicken Stock Cubes 8 Pack",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 7,
+      "protein_g": 0.1,
+      "carbs_g": 0.7,
+      "fat_g": 0.5,
+      "source": "OpenFoodFacts"
     }
   },
   "ingredients": {
     "ga_luoc": {
-<<<<<<< HEAD
-=======
       "id": "ga_luoc",
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Thịt gà luộc (100g)",
-      "calories": 165,
-      "protein": 31,
-      "carbs": 0,
-      "fat": 3.6
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 165,
+      "protein_g": 31,
+      "carbs_g": 0,
+      "fat_g": 3.6
     },
     "gao_trang": {
-<<<<<<< HEAD
-=======
       "id": "gao_trang",
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Gạo trắng (100g)",
-      "calories": 350,
-      "protein": 6.8,
-      "carbs": 78,
-      "fat": 0.6
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 350,
+      "protein_g": 6.8,
+      "carbs_g": 78,
+      "fat_g": 0.6
     },
     "dau_phong": {
-<<<<<<< HEAD
-=======
       "id": "dau_phong",
->>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Đậu phộng (10g)",
-      "calories": 56,
-      "protein": 2.6,
-      "carbs": 1.6,
-      "fat": 4.9
+      "serving_default": 10,
+      "serving_unit": "g",
+      "kcal_per_serving": 56,
+      "protein_g": 2.6,
+      "carbs_g": 1.6,
+      "fat_g": 4.9
     }
   },
   "healthy_swaps": {
