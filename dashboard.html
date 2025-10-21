@@ -32,8 +32,16 @@
         <main id="main-content">
             <header id="main-header">
                 <h2 id="page-title">Tổng quan</h2>
+<<<<<<< HEAD
                 <div class="user-menu-container" id="dashboard-auth-section">
                     </div>
+=======
+                <div class="user-menu-container">
+                    <button id="user-menu-button"><i class="fa-solid fa-user-circle"></i></button>
+                    <div id="user-menu-dropdown" class="user-menu-dropdown">
+                        </div>
+                </div>
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
             </header>
 
             <div class="page-content-wrapper">
@@ -115,30 +123,46 @@
                         </div>
                     </div>
                 </section>
-
+<div id="tab-recipe" class="analysis-tab" style="display:none;">
+    <p>Nhập nguyên liệu (tên và khối lượng bằng gram).</p>
+    <table id="recipe-input-table"><thead><tr><th>Nguyên liệu</th><th>Khối lượng (g)</th><th>Hành động</th></tr></thead><tbody></tbody></table>
+    <button id="add-ingredient-btn" class="secondary-btn">+ Thêm Nguyên Liệu</button><button id="analyze-recipe-btn" class="primary-btn">Tính Tổng Dinh Dưỡng</button>
+</div>
+<div id="analysis-result-area" class="result-box" style="display: none;">
+    <h3>Chi tiết Dinh dưỡng</h3>
+    <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
+    <p>Protein: <span id="total-protein">0</span>g | Carb: <span id="total-carbs">0</span>g | Fat: <span id="total-fat">0</span>g</p>
+    <h4>Món ăn: <span id="analyzed-food-name"></span></h4>
+    <div class="chart-container" style="height: 200px;"><canvas id="macroChart"></canvas></div>
+    <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
+</div>
                 <section id="analysis-page" class="page" style="display:none;">
                     <div class="tab-nav">
                         <button onclick="showAnalysisTab('tab-image')" class="tab-btn active" id="tab-image-btn">Tải/Chụp Ảnh</button>
                         <button onclick="showAnalysisTab('tab-recipe')" class="tab-btn" id="tab-recipe-btn">Phân tích Công thức</button>
                     </div>
                     <div id="tab-image" class="analysis-tab active">
-                        <p>Chọn ảnh hoặc chụp trực tiếp. (Tính năng AI được **mô phỏng** bằng nhập liệu)</p>
-                        <input type="file" id="photo-upload" accept="image/*" capture="camera">
-                        <div id="mock-recognition-input" style="display: none;"><label for="mock-food-name">Xác nhận/Nhập tên món ăn:</label><select id="mock-food-name"></select><button id="analyze-button" class="primary-btn">Phân Tích Dinh Dưỡng</button></div>
-                    </div>
-                    <div id="tab-recipe" class="analysis-tab" style="display:none;">
-                        <p>Nhập nguyên liệu (tên và khối lượng bằng gram).</p>
-                        <table id="recipe-input-table"><thead><tr><th>Nguyên liệu</th><th>Khối lượng (g)</th><th>Hành động</th></tr></thead><tbody></tbody></table>
-                        <button id="add-ingredient-btn" class="secondary-btn">+ Thêm Nguyên Liệu</button><button id="analyze-recipe-btn" class="primary-btn">Tính Tổng Dinh Dưỡng</button>
-                    </div>
-                    <div id="analysis-result-area" class="result-box" style="display: none;">
-                        <h3>Chi tiết Dinh dưỡng</h3>
-                        <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
-                        <p>Protein: <span id="total-protein">0</span>g | Carb: <span id="total-carbs">0</span>g | Fat: <span id="total-fat">0</span>g</p>
-                        <h4>Món ăn: <span id="analyzed-food-name"></span></h4>
-                        <div class="chart-container" style="block-size: 200px;"><canvas id="macroChart"></canvas></div>
-                        <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
-                    </div>
+    <p>Chọn ảnh món ăn bạn muốn phân tích. AI sẽ nhận diện và đưa ra các gợi ý dinh dưỡng.</p>
+    
+    <div class="input-group">
+        <label for="photo-upload">Tải ảnh lên từ thiết bị hoặc chụp ảnh mới:</label>
+        <input type="file" id="photo-upload" accept="image/*" capture="camera">
+    </div>
+    
+    <div id="image-analysis-steps">
+        <img id="image-preview" src="#" alt="Xem trước ảnh" style="display:none; max-width: 300px; margin-top: 15px; border-radius: 8px;"/>
+        <div id="api-status-message" style="margin-top: 15px; font-weight: bold;"></div>
+        <div id="food-suggestions" style="margin-top: 15px;"></div>
+    </div>
+
+    <div id="portion-control" style="display:none; margin-top: 20px; padding: 20px; background-color: #f4f7f6; border-radius: 8px; border: 1px solid #e0e0e0;">
+        <h4>Điều chỉnh khẩu phần cho: <span id="selected-food-name" style="color: #28a745;"></span></h4>
+        <div class="input-group">
+            <label for="portion-input">Khối lượng ước tính (gram):</label>
+            <input type="number" id="portion-input" value="350">
+        </div>
+        <button id="confirm-analysis-btn" class="primary-btn">Phân Tích Dinh Dưỡng</button>
+    </div>
                 </section>
 
                 <section id="planner-page" class="page" style="display:none;">
@@ -148,7 +172,11 @@
                     <div id="meal-category-container" class="meal-category-grid">
                     </div>
                     
+<<<<<<< HEAD
                     <h3 style="margin-block-start: 40px;">Lên Kế Hoạch Ăn Uống Cá Nhân (7 Ngày)</h3>
+=======
+                    <h3 style="margin-top: 40px;">Lên Kế Hoạch Ăn Uống Cá Nhân (7 Ngày)</h3>
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
                     <p>Tự điền thực đơn của bạn vào bảng sau. Nhấn **Lưu** sau khi hoàn tất. (Tương tự file Weekly Meal Tracker)</p>
                     
                     <div class="weekly-planner-wrapper">
@@ -343,6 +371,7 @@
                         </div>
                     </div>
                 </section>
+<<<<<<< HEAD
                 <section id="contact-page" class="page" style="display:none;">
                     <div class="contact-section">
                         <div class="contact-wrapper">
@@ -382,6 +411,9 @@
                     </div>
                 </section>
                 </div>
+=======
+            </div>
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
              <button id="scrollToTopBtn" title="Lên đầu trang">
                 <i class="fa-solid fa-arrow-up"></i>
             </button>

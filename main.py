@@ -1,9 +1,15 @@
 from flask import Flask, render_template
 from photobyapi import api_bp # Import Blueprint
+from flask_cors import CORS   # <-- 1. THÊM DÒNG NÀY
 
+# 1. Khởi tạo app MỘT LẦN DUY NHẤT
 app = Flask(__name__) 
-app.register_blueprint(api_bp) # Đăng ký các API routes
 
+# 2. Bật CORS cho app đó
+CORS(app) 
+
+# 3. Đăng ký các API routes vào app đó
+app.register_blueprint(api_bp)
 @app.route('/')
 def index():
     return render_template('photo_interfaceusers.html')

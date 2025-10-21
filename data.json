@@ -6,6 +6,10 @@
   },
   "dishes": {
     "pho_bo": {
+<<<<<<< HEAD
+=======
+      "id": "pho_bo",
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Phở Bò (Bát lớn)",
       "calories": 450,
       "protein": 30,
@@ -14,16 +18,38 @@
       "micronutrients": "Iron, B12"
     },
     "com_ga": {
+<<<<<<< HEAD
+=======
+      "id": "com_ga",
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Cơm Gà (Phần trung bình)",
       "calories": 620,
       "protein": 40,
       "carbs": 80,
       "fat": 20,
       "micronutrients": "Vitamin A, B6"
+<<<<<<< HEAD
+=======
+    },
+    "berry": {
+      "id": "berry",
+      "name": "Strawberry Jam",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 241,
+      "protein_g": 0.4,
+      "carbs_g": 59,
+      "fat_g": 0.1,
+      "source": "OpenFoodFacts"
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
     }
   },
   "ingredients": {
     "ga_luoc": {
+<<<<<<< HEAD
+=======
+      "id": "ga_luoc",
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Thịt gà luộc (100g)",
       "calories": 165,
       "protein": 31,
@@ -31,6 +57,10 @@
       "fat": 3.6
     },
     "gao_trang": {
+<<<<<<< HEAD
+=======
+      "id": "gao_trang",
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Gạo trắng (100g)",
       "calories": 350,
       "protein": 6.8,
@@ -38,6 +68,10 @@
       "fat": 0.6
     },
     "dau_phong": {
+<<<<<<< HEAD
+=======
+      "id": "dau_phong",
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
       "name": "Đậu phộng (10g)",
       "calories": 56,
       "protein": 2.6,

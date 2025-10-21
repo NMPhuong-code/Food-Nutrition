@@ -92,7 +92,8 @@ def confirm():
     portion_g = data.get('portion_g')
     if not food_id or not portion_g:
         return jsonify({"error":"food_id and portion_g required"}), 400
-    item = next((x for x in nl.FOODS if x['id'] == food_id), None)
+    # DÒNG MỚI ĐÃ SỬA LỖI
+    item = next((x for x in nl.FOODS if 'id' in x and x['id'] == food_id), None)
     if not item:
         return jsonify({"error":"food not found"}), 404
         

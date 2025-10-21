@@ -189,6 +189,7 @@ function initializeDashboardUI() {
     }
 }
 
+<<<<<<< HEAD
 
 function initDashboardEventListeners() {
     // Existing listeners
@@ -223,12 +224,34 @@ function initDashboardEventListeners() {
         colorPicker.value = savedColor;
     }
     // === KẾT THÚC THÊM ===
+=======
+// THAY THẾ TOÀN BỘ HÀM CŨ BẰNG HÀM MỚI NÀY
+function initDashboardEventListeners() {
+    // Hàm này sẽ kiểm tra nếu phần tử tồn tại trước khi thêm sự kiện
+    const addSafeListener = (id, event, handler) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.addEventListener(event, handler);
+        }
+    };
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 
-    // Scroll to Top Logic
+    // Gắn các sự kiện một cách an toàn
+    addSafeListener('calculate-bmi-btn', 'click', calculateBMI);
+    addSafeListener('photo-upload', 'change', handleImageUpload);
+    addSafeListener('confirm-analysis-btn', 'click', confirmAndAnalyzeNutrition);
+    addSafeListener('add-ingredient-btn', 'click', addIngredientRow);
+    addSafeListener('analyze-recipe-btn', 'click', analyzeRecipe);
+    addSafeListener('save-meal-btn', 'click', saveAnalyzedMeal);
+    addSafeListener('export-csv-btn', 'click', exportHistoryToCSV);
+    addSafeListener('save-weekly-plan-btn', 'click', saveWeeklyPlan);
+    addSafeListener('export-weekly-plan-btn', 'click', exportWeeklyPlanToCSV);
+
+    // Scroll to Top Logic (phần này không đổi)
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
     const scrollableContent = document.querySelector('.page-content-wrapper');
 
-    if(scrollToTopBtn && scrollableContent){
+    if (scrollToTopBtn && scrollableContent) {
         scrollableContent.addEventListener('scroll', () => {
             if (scrollableContent.scrollTop > 100) {
                 scrollToTopBtn.style.display = "block";
@@ -271,6 +294,7 @@ function showPage(pageId) {
     if (pageId === 'dashboard-page') updateDashboard();
     else if (pageId === 'history-page') loadHistory();
     else if (pageId === 'planner-page') renderPlannerPage(); 
+<<<<<<< HEAD
     // Không cần load gì cho admin-page vì nó là HTML tĩnh
 }
 
@@ -396,6 +420,135 @@ function showAnalysisTab(tabId) {
     }
 }
 
+=======
+    else if (pageId === 'admin-page' && sessionStorage.getItem('userRole') === 'admin') {
+        document.getElementById('admin-data-display').textContent = JSON.stringify(nutritionData, null, 2);
+    }
+}
+
+// --- NEW PLANNER PAGE FUNCTIONS ---
+
+function renderPlannerPage() {
+    renderMealCategories();
+    renderWeeklyPlannerTable();
+    loadWeeklyPlan();
+}
+
+function renderMealCategories() {
+    const container = document.getElementById('meal-category-container');
+    if (!container) return;
+    
+    container.innerHTML = MEAL_CATEGORIES.map(category => `
+        <a href="${category.link}" target="_blank" class="category-card">
+            <img src="${category.image}" alt="${category.title}">
+            <div class="category-info">
+                <h4>${category.title}</h4>
+                <p>${category.description}</p>
+            </div>
+        </a>
+    `).join('');
+}
+
+function renderWeeklyPlannerTable() {
+    const headerRow = document.getElementById('table-day-headers');
+    const tableBody = document.getElementById('planner-table-body');
+    if (!headerRow || !tableBody) return;
+
+    // Render Headers (Thứ Hai -> Chủ Nhật)
+    headerRow.innerHTML = '<th>Bữa Ăn</th>' + WEEK_DAYS.map(day => `<th>${day}</th>`).join('');
+
+    // Render Body (Breakfast, Lunch, Dinner, Snack)
+    tableBody.innerHTML = MEAL_TYPES.map(type => `
+        <tr data-meal-type="${type}">
+            <td class="meal-type-header">${type}</td>
+            ${WEEK_DAYS.map(day => `
+                <td data-day="${day}" data-meal="${type}">
+                    <input type="text" class="meal-input" data-day="${day}" data-meal="${type}" placeholder="Thêm món ăn">
+                </td>
+            `).join('')}
+        </tr>
+    `).join('');
+}
+
+function loadWeeklyPlan() {
+    const savedPlan = JSON.parse(localStorage.getItem('weeklyMealPlan') || '{}');
+    if (Object.keys(savedPlan).length === 0) return;
+
+    MEAL_TYPES.forEach(meal => {
+        WEEK_DAYS.forEach(day => {
+            const input = document.querySelector(`.meal-input[data-day="${day}"][data-meal="${meal}"]`);
+            if (input && savedPlan[day] && savedPlan[day][meal]) {
+                input.value = savedPlan[day][meal];
+            }
+        });
+    });
+}
+
+function saveWeeklyPlan() {
+    const weeklyPlan = {};
+    WEEK_DAYS.forEach(day => {
+        weeklyPlan[day] = {};
+        MEAL_TYPES.forEach(meal => {
+            const input = document.querySelector(`.meal-input[data-day="${day}"][data-meal="${meal}"]`);
+            if (input && input.value.trim()) {
+                weeklyPlan[day][meal] = input.value.trim();
+            }
+        });
+    });
+
+    localStorage.setItem('weeklyMealPlan', JSON.stringify(weeklyPlan));
+    alert('Đã lưu kế hoạch ăn uống tuần này!');
+}
+
+function exportWeeklyPlanToCSV() {
+    const weeklyPlan = JSON.parse(localStorage.getItem('weeklyMealPlan') || '{}');
+    
+    // Nếu chưa lưu lần nào, chỉ xuất khung bảng
+    if (Object.keys(weeklyPlan).length === 0) {
+        // Tự động tạo kế hoạch trống để xuất
+        WEEK_DAYS.forEach(day => weeklyPlan[day] = {});
+    }
+
+    let csv = 'Bữa Ăn,' + WEEK_DAYS.join(',') + '\n';
+
+    MEAL_TYPES.forEach(meal => {
+        let row = `"${meal}"`;
+        WEEK_DAYS.forEach(day => {
+            const dish = weeklyPlan[day] && weeklyPlan[day][meal] ? weeklyPlan[day][meal] : '';
+            // Escape double quotes and enclose in double quotes for CSV safety
+            row += `,"${dish.replace(/"/g, '""')}"`;
+        });
+        csv += row + '\n';
+    });
+
+    const a = document.createElement('a');
+    a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+    a.target = '_blank';
+    a.download = 'weekly_meal_plan.csv';
+    a.click();
+}
+
+// --- Function to handle tab switching on Analysis Page (Khắc phục lỗi) ---
+function showAnalysisTab(tabId) {
+    document.querySelectorAll('.analysis-tab').forEach(tab => tab.style.display = 'none');
+    
+    // Xử lý nút active trong tab-nav
+    document.querySelectorAll('#analysis-page .tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    // Hiển thị tab tương ứng
+    const tabElement = document.getElementById(tabId);
+    if (tabElement) {
+        tabElement.style.display = 'block';
+    }
+    
+    // Kích hoạt nút tương ứng
+    const tabButton = document.getElementById(tabId + '-btn');
+    if (tabButton) {
+        tabButton.classList.add('active');
+    }
+}
+
+>>>>>>> 4adb1a985e1bdc0bb32f6be7b1574aaf9709ddd7
 // --- ALL DASHBOARD CORE FUNCTIONS ---
 
 /**
@@ -514,9 +667,62 @@ function calculateBMI() {
     }
 }
 
-function handleImageUpload(event) {
-    if (event.target.files[0]) {
-        document.getElementById('mock-recognition-input').style.display = 'block';
+// THAY THẾ HÀM CŨ BẰNG HÀM MỚI NÀY
+async function handleImageUpload(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Lấy các element trên giao diện
+    const preview = document.getElementById('image-preview');
+    const statusMsg = document.getElementById('api-status-message');
+    const suggestionsEl = document.getElementById('food-suggestions');
+    const portionControl = document.getElementById('portion-control');
+    const resultArea = document.getElementById('analysis-result-area');
+
+    // Reset giao diện
+    preview.src = URL.createObjectURL(file);
+    preview.style.display = 'block';
+    suggestionsEl.innerHTML = '';
+    portionControl.style.display = 'none';
+    resultArea.style.display = 'none';
+    statusMsg.style.color = '#007bff';
+    statusMsg.textContent = 'Đang gửi ảnh và phân tích... Vui lòng đợi trong giây lát.';
+
+    const fd = new FormData();
+    fd.append('photo', file);
+
+    try {
+        // 1. GỌI API /api/photo/upload
+        const response = await fetch('http://127.0.0.1:5000/api/photo/upload', {
+            method: 'POST',
+            body: fd
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        statusMsg.textContent = 'AI đã nhận diện được các món sau. Vui lòng chọn một gợi ý:';
+
+        // 2. HIỂN THỊ CÁC GỢI Ý (SUGGESTIONS)
+        if (data.suggestions && data.suggestions.length > 0) {
+            data.suggestions.forEach(s => {
+                const btn = document.createElement('button');
+                btn.textContent = `${s.name} ( khớp với: ${s.match_label} )`;
+                btn.className = 'secondary-btn';
+                btn.style.margin = '5px';
+                btn.onclick = () => selectFoodSuggestion(s.food_id, s.name);
+                suggestionsEl.appendChild(btn);
+            });
+        } else {
+            statusMsg.textContent = 'Không nhận diện được món ăn nào phù hợp trong ảnh.';
+        }
+
+    } catch (error) {
+        statusMsg.style.color = 'red';
+        statusMsg.textContent = `Lỗi: ${error.message}. Vui lòng kiểm tra lại backend server và khóa API.`;
     }
 }
 
@@ -531,13 +737,6 @@ function populateFoodDropdown() {
         option.textContent = nutritionData.dishes[key].name;
         select.appendChild(option);
     });
-}
-
-function analyzeDishFromMock() {
-    const key = document.getElementById('mock-food-name').value;
-    if (!key) return;
-    const dish = nutritionData.dishes[key];
-    displayAnalysisResult(dish.name, dish);
 }
 
 function addIngredientRow() {
@@ -621,6 +820,66 @@ function saveAnalyzedMeal() {
     
     alert('Đã lưu bữa ăn!');
     updateDashboard(); // Cập nhật dashboard (nếu đang ở trang đó)
+}
+// Dán 2 hàm mới này vào file script.js
+let currentFoodId = null; // Biến toàn cục để lưu ID món ăn đã chọn
+
+function selectFoodSuggestion(foodId, foodName) {
+    currentFoodId = foodId;
+    document.getElementById('selected-food-name').textContent = foodName;
+    document.getElementById('portion-control').style.display = 'block';
+
+    // Đánh dấu nút được chọn
+    const suggestionsEl = document.getElementById('food-suggestions');
+    suggestionsEl.querySelectorAll('button').forEach(btn => {
+        btn.style.backgroundColor = '#6c757d'; // Reset màu
+    });
+    // Tìm nút được click và đổi màu
+    const clickedButton = Array.from(suggestionsEl.querySelectorAll('button')).find(btn => btn.textContent.startsWith(foodName));
+    if (clickedButton) {
+        clickedButton.style.backgroundColor = '#28a745'; // Màu xanh lá
+    }
+}
+
+async function confirmAndAnalyzeNutrition() {
+    if (!currentFoodId) {
+        alert('Vui lòng chọn một gợi ý món ăn trước.');
+        return;
+    }
+
+    const portion = parseFloat(document.getElementById('portion-input').value) || 0;
+    const statusMsg = document.getElementById('api-status-message');
+    statusMsg.textContent = 'Đang tính toán dinh dưỡng...';
+
+    try {
+        // 3. GỌI API /api/photo/confirm
+        const response = await fetch('http://127.0.0.1:5000/api/photo/confirm', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ food_id: currentFoodId, portion_g: portion })
+        });
+
+        const data = await response.json();
+
+        if (data.error) {
+            throw new Error(data.error);
+        }
+
+        if (data.result) {
+            const res = data.result;
+            // 4. HIỂN THỊ KẾT QUẢ CUỐI CÙNG (tái sử dụng hàm cũ)
+            statusMsg.textContent = ''; // Xóa thông báo
+            displayAnalysisResult(res.name, {
+                calories: res.kcal,
+                protein: res.protein_g,
+                carbs: res.carbs_g,
+                fat: res.fat_g
+            });
+        }
+    } catch (error) {
+        statusMsg.style.color = 'red';
+        statusMsg.textContent = `Lỗi: ${error.message}`;
+    }
 }
 
 function isToday(dateString) { 
