@@ -18,7 +18,7 @@ Jinja2==3.1.6
 markdown-it-py==4.0.0
 MarkupSafe==3.0.3
 mdurl==0.1.2
-numpy==2.3.4
+numpy
 packaging==25.0
 perf_analyzer==0.1.0
 pfzy==0.3.4
