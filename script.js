@@ -98,6 +98,7 @@ function setupDashboardPage() {
 }
 
 async function loadDashboardData() {
+    console.log("Attempting to load data.json...");
     // Áp dụng màu theme đã lưu (nếu có) ngay khi tải
     const savedColor = localStorage.getItem('siteThemeColor');
     if (savedColor) applyThemeColor(savedColor);
@@ -157,6 +158,7 @@ function prepareSimpleSearchData() {
             searchDataMap[`blog_${post.id}`] = { ...post, id: `blog_${post.id}`, type: 'Blog', isExternal: true, title: post.title }; // Link đã có sẵn trong post.link
         });
     }
+    console.log("searchDataMap Populated:", searchDataMap);
 }
 
 // === Render Blog Posts ===
@@ -284,6 +286,7 @@ function initDashboardEventListeners() {
 function handleSearchInput(event) {
     const inputElement = event.target;
     const query = inputElement.value.trim().toLowerCase(); // Lấy từ khóa và chuyển chữ thường
+    console.log("searchDataMap Populated:", searchDataMap);
 
     if (query.length < 1) { // Nếu ô trống hoặc chỉ có khoảng trắng
         clearSearchResults(inputElement);
@@ -297,6 +300,7 @@ function handleSearchInput(event) {
 // === Lọc dữ liệu theo từ khóa ===
 function filterData(query) {
     const filteredResults = [];
+    console.log("Filtering for:", query);
     // Lặp qua searchDataMap đã chuẩn bị
     for (const id in searchDataMap) {
         const item = searchDataMap[id];
@@ -311,6 +315,7 @@ function filterData(query) {
             filteredResults.push(item); // Thêm vào kết quả nếu khớp
         }
     }
+    console.log("Filtered Results:", filteredResults);
     return filteredResults;
 }
 
@@ -1022,3 +1027,5 @@ if (scrollToTopBtnGlobal) {
     // Kiểm tra vị trí lần đầu khi tải trang
     checkScrollPosition();
 }
+
+
