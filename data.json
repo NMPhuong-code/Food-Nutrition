@@ -235,6 +235,94 @@
       "carbs_g": 59,
       "fat_g": 0.1,
       "source": "OpenFoodFacts"
+    },
+    "pasta": {
+      "id": "pasta",
+      "name": "SPAGHETTI N° 5",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 359,
+      "protein_g": 13,
+      "carbs_g": 71,
+      "fat_g": 2,
+      "source": "OpenFoodFacts"
+    },
+    "tomato": {
+      "id": "tomato",
+      "name": "Ketchup star 310 g",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 108,
+      "protein_g": 1.12,
+      "carbs_g": 25.7,
+      "fat_g": 0.08,
+      "source": "OpenFoodFacts"
+    },
+    "basil": {
+      "id": "basil",
+      "name": "PESTO alla GENOVESE",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 492,
+      "protein_g": 4.7,
+      "carbs_g": 11,
+      "fat_g": 47,
+      "source": "OpenFoodFacts"
+    },
+    "spaghetti_bolognese": {
+      "id": "spaghetti_bolognese",
+      "name": "Spaghetti bolognese",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 156,
+      "protein_g": 6.9,
+      "carbs_g": 16.8,
+      "fat_g": 6.6,
+      "source": "OpenFoodFacts"
+    },
+    "macaroni": {
+      "id": "macaroni",
+      "name": "Macaroni sauce tomate et boulettes au bœuf",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 154,
+      "protein_g": 7,
+      "carbs_g": 18,
+      "fat_g": 5.7,
+      "source": "OpenFoodFacts"
+    },
+    "lettuce": {
+      "id": "lettuce",
+      "name": "Harissa chicken couscous salad",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 121,
+      "protein_g": 9.5,
+      "carbs_g": 13.3,
+      "fat_g": 2.2,
+      "source": "OpenFoodFacts"
+    },
+    "salad": {
+      "id": "salad",
+      "name": "Salade & Compagnie Manhattan Poulet Roti",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 186,
+      "protein_g": 8.3,
+      "carbs_g": 17,
+      "fat_g": 8.8,
+      "source": "OpenFoodFacts"
+    },
+    "onion": {
+      "id": "onion",
+      "name": "Sour Cream & Onion",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 537,
+      "protein_g": 6.67,
+      "carbs_g": 51.5,
+      "fat_g": 33.3,
+      "source": "OpenFoodFacts"
     }
   },
   "ga_luoc": {
