@@ -2,22 +2,18 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body, html {
-    block-size: 100%; /* KHÔNG dùng 100vh để body/html có thể mở rộng theo nội dung */
+    block-size: 100vh;
     font-family: 'Roboto', sans-serif;
     background-color: #f4f7f6;
-    /* KHÔNG overflow: hidden; ở đây. Để body/html là nơi cuộn chính */
+    overflow: hidden;
 }
 
-#app-container { 
-    display: flex; 
-    /* block-size: 100%; KHÔNG đặt chiều cao cố định cho app-container, để nó mở rộng theo nội dung */
-    min-height: 100vh; /* Đảm bảo nó luôn chiếm ít nhất 100% viewport */
-    /* KHÔNG overflow: hidden; ở đây */
-}
+#app-container { display: flex; block-size: 100%; }
 
 /* Full bảng điều khiển dashboard */
 #sidebar {
     inline-size: 220px;
+    /*background-color: #fff;*/
     background-image: linear-gradient(rgba(180, 247, 200, 0.8), rgba(159, 241, 166, 0.8)), url('https://i.pinimg.com/1200x/73/b6/0e/73b60eb457acb0508d70f01644421bf1.jpg');
     background-size: cover;
     background-position: cover;
@@ -27,17 +23,13 @@ body, html {
     flex-direction: column;
     padding: 20px;
     flex-shrink: 0;
-    /* LOẠI BỎ mọi thuộc tính liên quan đến chiều cao cố định hoặc cuộn riêng cho sidebar */
-    /* top: 0; */
-    /* height: 100vh; */
-    /* overflow-y: auto; */
-    /* z-index: 100; */ /* Giữ z-index nếu cần cho các tooltip */
 }
 
 /*Logo dashboard */
 #sidebar .logo {
-    display: flex; align-items: center; text-decoration: none; color: #28a745; 
+    display: flex; align-items: cover; text-decoration: none; color: #28a745;
     font-size: 1.8em; font-weight: 700; font-family: 'Montserrat', sans-serif; margin-block-end: 50px;
+    
 }
 
 #sidebar-nav { list-style: none; }
@@ -60,23 +52,11 @@ body, html {
 
 
 /* Main Content */
-#main-content { 
-    flex-grow: 1; 
-    display: flex; 
-    flex-direction: column; 
-    /* KHÔNG đặt overflow-y: auto; ở đây nữa. Body/html sẽ cuộn. */
-    /* overflow-y: auto; */
-    /* KHÔNG min-height: 100vh; ở đây */
-    position: relative; /* Quan trọng cho footer nếu bạn muốn nó sticky/fixed dưới cùng của main-content */
-}
+#main-content { flex-grow: 1; display: flex; flex-direction: column; overflow: hidden; }
 
 #main-header {
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 30px; background-color: #fff; border-block-end: 1px solid #e0e0e0; flex-shrink: 0;
-    /* LOẠI BỎ position: sticky để nó cuộn cùng với toàn bộ trang */
-    /* position: sticky; */ 
-    /* top: 0; */
-    z-index: 99;
 }
 
 #page-title { font-family: 'Montserrat', sans-serif; font-size: 1.8em; }
@@ -94,12 +74,7 @@ body, html {
 }
 .user-menu-dropdown a:hover, .user-menu-dropdown button:hover { background-color: #f1f1f1; }
 
-.page-content-wrapper { 
-    /* LOẠI BỎ overflow-y: auto; */
-    padding: 30px; 
-    flex-grow: 1; /* Cho phép nó mở rộng và chiếm hết không gian còn lại */
-    /* KHÔNG -webkit-overflow-scrolling: touch; ở đây */
-}
+.page-content-wrapper { overflow-y: auto; padding: 30px; flex-grow: 1; }
 .page h3 { font-family: 'Montserrat', sans-serif; margin-block-end: 20px; font-size: 1.5em; }
 
 /* Generic styles (Đã thêm input[type="email"], textarea) */
@@ -565,8 +540,8 @@ button:disabled:hover {
 
 .admin-card .primary-btn {
     display: inline-block; /* Buộc nút hiển thị như một khối */
-    position: relative; /* Hủy bỏ mọi thuộc tính "position" lạ */
-    margin-block-start: 15px; /* Tạo khoảng cách với văn bản bên trên */
+    position: relative;    /* Hủy bỏ mọi thuộc tính "position" lạ */
+    margin-block-start: 15px;      /* Tạo khoảng cách với văn bản bên trên */
 }
 
 /* --- CSS CHO PHẦN GIỚI THIỆU BLOG --- */
@@ -632,14 +607,14 @@ button:disabled:hover {
     border-block-start: 1px solid #e0e0e0;
     margin-block-start: auto; /* Quan trọng: Đẩy footer xuống dưới */
     flex-shrink: 0; /* Đảm bảo footer không bị co lại */
-    inline-size: 100%; /* Đảm bảo footer chiếm toàn bộ chiều rộng có sẵn */
+    inline-size: 100%;
 }
 
 .footer-container {
-    /* Căn lề 30px giống .page-content-wrapper, nhưng với max-inline-size */
+    /* Căn lề 30px giống .page-content-wrapper */
     padding: 0 20px; 
     margin: 0 auto;
-    max-inline-size: 100%; /* Có thể điều chỉnh nếu bạn muốn footer giới hạn chiều rộng giống nội dung */
+    max-inline-size: 100%; 
 }
 
 .site-footer .footer-about {
@@ -690,7 +665,7 @@ button:disabled:hover {
 #scrollToTopBtn {
     display: none; /* Ẩn ban đầu */
     position: fixed; /* Giữ vị trí cố định trên màn hình */
-    inset-block-end: 30px; /* Cách đáy 30px */
+    inset-block-end: 130px; /* Cách đáy 130px */
     inset-inline-end: 30px; /* Cách phải 30px */
     z-index: 100; /* Nằm trên các phần tử khác */
     border: none;
@@ -708,122 +683,6 @@ button:disabled:hover {
 
 #scrollToTopBtn:hover {
     background-color: var(--primary-color-dark, #218838); /* Màu tối hơn khi hover */
-}
-
-/* === CSS CHO DROPDOWN KẾT QUẢ TÌM KIẾM === */
-/* Cần thêm position: relative cho .search-bar nếu chưa có */
-.search-bar {
-    position: relative; /* Đảm bảo dropdown định vị đúng */
-}
-
-.search-results-dropdown {
-    display: none; /* Ẩn ban đầu */
-    position: absolute;
-    inset-block-start: 100%; /* Ngay dưới thanh tìm kiếm */
-    inset-inline-end: 0; /* Changed to inset-inline-end 0 to match user menu */
-    inline-size: 100%; /* Rộng bằng thanh tìm kiếm */
-    background-color: white;
-    border: 1px solid #ddd;
-    border-block-start: none;
-    border-radius: 0 0 8px 8px; /* Bo góc dưới */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    max-block-size: 300px; /* Chiều cao tối đa */
-    overflow-y: auto; /* Thêm thanh cuộn nếu cần */
-    z-index: 1001; /* Nằm trên header */
-}
-
-.result-item {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #333;
-    border-block-end: 1px solid #eee;
-    white-space: nowrap; /* Ngăn xuống dòng */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Thêm ... nếu quá dài */
-}
-.result-item:last-child {
-    border-block-end: none;
-}
-.result-item:hover {
-    background-color: #f5f5f5;
-}
-
-.result-type {
-    font-weight: bold;
-    color: var(--primary-color, #28a745); /* Màu chủ đạo */
-    margin-inline-end: 8px;
-    font-size: 0.9em;
-}
-
-.result-title {
-    font-size: 0.95em;
-}
-
-.no-result {
-    color: #888;
-    font-style: italic;
-    cursor: default;
-}
-.no-result:hover {
-    background-color: transparent;
-}
-
-/* === Media Queries cho Responsive Design === */
-@media (max-width: 992px) {
-    #sidebar {
-        inline-size: 80px; /* Thu nhỏ sidebar */
-        padding: 15px 10px;
-        align-items: center; /* Căn giữa các icon */
-    }
-    #sidebar .logo {
-        font-size: 1.2em;
-        margin-block-end: 30px;
-    }
-    #sidebar .logo span {
-        display: none; /* Ẩn chữ trong logo */
-    }
-    #sidebar-nav .nav-btn span {
-        display: none; /* Ẩn chữ của nav button */
-    }
-    #sidebar-nav .nav-btn {
-        padding: 10px;
-        justify-content: center; /* Căn giữa icon */
-        gap: 0;
-    }
-    #sidebar-nav .nav-btn i {
-        font-size: 1.5em; /* Phóng to icon */
-    }
-
-    #main-content {
-        margin-inline-start: 80px; /* Bằng inline-size của sidebar mới */
-    }
-
-    #main-header {
-        padding: 15px 20px;
-    }
-
-    #page-title {
-        font-size: 1.4em;
-    }
-
-    .page-content-wrapper {
-        padding: 20px;
-    }
-
-    .bmi-content-wrapper, .contact-wrapper {
-        flex-direction: column; /* Xếp chồng các cột trên mobile */
-        gap: 20px;
-    }
-    .blog-intro-header {
-        flex-direction: column;
-        gap: 20px;
-    }
-    .intro-image, .intro-text {
-        flex: none; /* Hủy bỏ flex-grow */
-        inline-size: 100%;
-        max-inline-size: 100%; /* Mở rộng toàn bộ chiều rộng */
-    }
 }
 
 @media (max-width: 768px) {

@@ -360,6 +360,7 @@ main {
     margin: 0;
 }
 
+
 /* === CSS NÚT CUỘN LÊN ĐẦU === */
 #scrollToTopBtn {
     display: none; /* Ẩn ban đầu */
@@ -383,63 +384,3 @@ main {
 #scrollToTopBtn:hover {
     background-color: var(--primary-color-dark, #218838); /* Màu tối hơn khi hover */
 }
-
-/* === CSS CHO DROPDOWN KẾT QUẢ TÌM KIẾM === */
-/* Cần thêm position: relative cho .search-bar nếu chưa có */
-.search-bar {
-    position: relative; /* Đảm bảo dropdown định vị đúng */
-}
-
-.search-results-dropdown {
-    display: none; /* Ẩn ban đầu */
-    position: absolute;
-    inset-block-start: 100%; /* Ngay dưới thanh tìm kiếm */
-    inset-inline-start: 0;
-    inline-size: 100%; /* Rộng bằng thanh tìm kiếm */
-    background-color: white;
-    border: 1px solid #ddd;
-    border-block-start: none;
-    border-radius: 0 0 8px 8px; /* Bo góc dưới */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    max-block-size: 300px; /* Chiều cao tối đa */
-    overflow-y: auto; /* Thêm thanh cuộn nếu cần */
-    z-index: 1001; /* Nằm trên header */
-}
-
-.result-item {
-    display: block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: #333;
-    border-block-end: 1px solid #eee;
-    white-space: nowrap; /* Ngăn xuống dòng */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Thêm ... nếu quá dài */
-}
-.result-item:last-child {
-    border-block-end: none;
-}
-.result-item:hover {
-    background-color: #f5f5f5;
-}
-
-.result-type {
-    font-weight: bold;
-    color: var(--primary-color, #28a745); /* Màu chủ đạo */
-    margin-inline-end: 8px;
-    font-size: 0.9em;
-}
-
-.result-title {
-    font-size: 0.95em;
-}
-
-.no-result {
-    color: #888;
-    font-style: italic;
-    cursor: default;
-}
-.no-result:hover {
-    background-color: transparent;
-}
-

@@ -29,13 +29,13 @@
     },
     "berry": {
       "id": "berry",
-      "name": "Strawberry Jam",
+      "name": "Strawberry",
       "serving_default": 100,
       "serving_unit": "g",
-      "kcal_per_serving": 241,
-      "protein_g": 0.4,
-      "carbs_g": 59,
-      "fat_g": 0.1,
+      "kcal_per_serving": 32,
+      "protein_g": 0.7,
+      "carbs_g": 7.7,
+      "fat_g": 0.3,
       "source": "OpenFoodFacts"
     },
     "meat": {
@@ -92,6 +92,50 @@
       "carbs_g": 0.7,
       "fat_g": 0.5,
       "source": "OpenFoodFacts"
+    },
+    "avocado": {
+      "id": "avocado",
+      "name": "Avocado",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 160,
+      "protein_g": 1.8,
+      "carbs_g": 8.5,
+      "fat_g": 4.7,
+      "source": "OpenFoodFacts"
+    },
+    "melon": {
+      "id": "melon",
+      "name": "Dada melon",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 14,
+      "protein_g": 0,
+      "carbs_g": 3.7,
+      "fat_g": 0,
+      "source": "OpenFoodFacts"
+    },
+    "fish": {
+      "id": "fish",
+      "name": "Filets de Maquereaux à la moutarde",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 201,
+      "protein_g": 11,
+      "carbs_g": 0.6,
+      "fat_g": 17,
+      "source": "OpenFoodFacts"
+    },
+    "cereal": {
+      "id": "cereal",
+      "name": "Tonik",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 504,
+      "protein_g": 4.35,
+      "carbs_g": 71.7,
+      "fat_g": 22.2,
+      "source": "OpenFoodFacts"
     }
   },
   "ingredients": {
@@ -135,70 +179,5 @@
       "alternative": "Gạo lứt",
       "impact": "+3g Fiber, GI thấp hơn"
     }
-  },
-  "blogPosts":[
-    {
-      "id": "blog1",
-      "title": "Cách làm bữa ăn đơn giản mà đủ dinh dưỡng",
-      "snippet": "Trong cuộc sống bận rộn, một bữa ăn nhanh gọn, đơn giản nhưng vẫn đảm bảo... (nhấn để xem chi tiết)",
-      "link": "https://memart.vn/tin-tuc/suc-khoe-6/cong-thuc-1-bua-an-day-du-dinh-duong-de-dang-va-nhanh-chong-vi-cb.html",
-      "image": "https://i.pinimg.com/1200x/79/f7/b2/79f7b2bfdc23418c084753b247588b4f.jpg"
-    },
-    {
-      "id": "blog2",
-      "title": "Hiểu về Protein, Carb và Fat",
-      "snippet": "Các chất dinh dưỡng đa lượng là nền tảng của mọi chế độ ăn. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)",
-      "link": "https://fitfood.vn/tin-tuc/carb-protein-va-chat-beo-cac-nguyen-tac-cho-mot-bua-an-can-doi",
-      "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600"
-    },
-    {
-      "id": "blog3",
-      "title": "Top 5 thực phẩm giàu Sắt cho người thiếu máu",
-      "snippet": "Thiếu sắt có thể gây mệt mỏi, chóng mặt. Bổ sung ngay 5 loại thực phẩm... (nhấn để xem chi tiết)",
-      "link": "https://nutrihome.vn/thuc-pham-giau-sat/",
-      "image": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=600"
-    },
-    {
-      "id": "blog4",
-      "title": "Xây dựng chế độ ăn giảm mỡ cho người mới",
-      "snippet": "Nguyên tắc cơ bản của việc giảm mỡ là calo-in < calo-out. Bắt đầu từ... (nhấn để xem chi tiết)",
-      "link": "https://www.coolmate.me/blog/che-do-an-tang-co-giam-mo-3861",
-      "image": "https://i.pinimg.com/1200x/3f/66/a9/3f66a9bc8d0a3d4f89985bd4c127cab7.jpg"
-    },
-    {
-      "id": "blog5",
-      "title": "Quan niệm sai lầm về ăn uống",
-      "snippet": "Có những quan niệm sai về cách ăn uống. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)",
-      "link": "https://fitfood.vn/tin-tuc/carb-protein-va-chat-beo-cac-nguyen-tac-cho-mot-bua-an-can-doi",
-      "image": "https://phunuvietnam.mediacdn.vn/thumb_w/700/179072216278405120/2020/11/5/avatar1604593550401-16045935584961439793577.jpg"
-    },
-    {
-      "id": "blog6",
-      "title": "Hôm nay ăn gì?",
-      "snippet": "Ăn gì và ăn bao nhiêu mỗi ngày. Hãy cùng tìm hiểu nhé... (nhấn để xem chi tiết)",
-      "link": "https://www.vinmec.com/vie/bai-viet/thuc-an-chung-ta-can-bao-nhieu-moi-ngay-vi",
-      "image": "https://cdn.nguyenkimmall.com/images/detailed/822/hom-nay-an-gi-thumbnail.jpg"
-    },
-    {
-      "id": "blog7",
-      "title": "Không chỉ là ăn uống, mà còn là hành trình",
-      "snippet": "Blog ẩm thực là nền tảng trực tuyến nơi mọi người chia sẻ những bài viết về đồ ăn, thức uống và mọi thứ liên quan đến ẩm thực. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)",
-      "link": "https://lethanhnamwork.com/blog-am-thuc-khong-chi-la-an-uong-ma-con-la-hanh-trinh/",
-      "image": "https://lethanhnamwork.com/wp-content/uploads/2025/02/Blog-Am-Thuc-%E2%80%93-Khong-Chi-La-An-Uong-Ma-Con-La-Hanh-Trinh.jpg"
-    },
-    {
-      "id": "blog8",
-      "title": "Bữa nào nên ăn nhiều nhất trong ngày? Cách tối ưu hóa thời gian ăn uống",
-      "snippet": "Các bữa ăn trong ngày giúp cung cấp năng lượng và dinh dưỡng cần thiết cho cơ thể hoạt động khỏe mạnh. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)",
-      "link": "https://nhathuoclongchau.com.vn/bai-viet/bua-nao-nen-an-nhieu-nhat-trong-ngay-cach-toi-uu-hoa-thoi-gian-an-uong.html",
-      "image": "https://cdn.nhathuoclongchau.com.vn/unsafe/800x0/https://cms-prod.s3-sgn09.fptcloud.com/bua_nao_nen_an_nhieu_nhat_trong_ngay_cach_toi_uu_hoa_thoi_gian_an_uong_1_08bf0ece78.png"
-    },
-    {
-      "id": "blog9",
-      "title": "Bạn nên nạp bao nhiêu thức ăn mỗi ngày?",
-      "snippet": "Người lớn nên nạp lượng calo thích hợp theo độ tuổi, chú trọng ăn ngũ cốc nguyên hạt, nhiều rau quả, trái cây. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)",
-      "link": "https://ngoisao.vnexpress.net/ban-nen-nap-bao-nhieu-thuc-an-moi-ngay-4824639.html",
-      "image": "https://cdn.tgdd.vn/2021/07/CookProduct/Anbaonhieucalo-1200x676.jpg"
-    }
-  ]
+  }
 }

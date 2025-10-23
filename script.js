@@ -108,25 +108,17 @@ async function loadDashboardData() {
         const response = await fetch('data.json');
         nutritionData = await response.json();
 
-        // === CHUẨN BỊ DỮ LIỆU CHO TÌM KIẾM ĐƠN GIẢN ===
-        prepareSimpleSearchData(); // Tạo map dữ liệu để dễ lấy link
-        
         const userRole = sessionStorage.getItem('userRole'); // Lấy userRole ở đây
         
         initializeDashboardUI(); // 1. Cài đặt UI (ẩn/hiện nút, menu)
         initDashboardEventListeners(); // 2. Gắn các trình nghe sự kiện
         populateFoodDropdown(); // 3. Đổ dữ liệu vào dropdown phân tích
 
-        // Render blog posts từ data.json 
-        renderBlogPosts();
-        
         const params = new URLSearchParams(window.location.search);
         
-        // 2. THAY ĐỔI LOGIC CHỌN TRANG MẶC ĐỊNH
         // Nếu có userRole, mặc định là 'dashboard-page', nếu không, mặc định là 'bmi-page'
         let page = params.get('page') || (userRole ? 'dashboard-page' : 'bmi-page');
 
-        // 3. THÊM LỚP BẢO VỆ
         // Nếu người dùng guest cố tình truy cập trang cá nhân qua URL
         if (!userRole && (page === 'dashboard-page' || page === 'history-page' || page === 'admin-page')) {
             page = 'bmi-page'; // Chuyển hướng họ về trang BMI
@@ -137,46 +129,6 @@ async function loadDashboardData() {
     } catch (error) {
         console.error("Lỗi khi tải dữ liệu cho dashboard:", error);
     }
-}
-
-// ===  Chuẩn bị map dữ liệu tìm kiếm ===
-function prepareSimpleSearchData() {
-    searchDataMap = {}; // Reset map
-    // Gộp tất cả dữ liệu có thể tìm kiếm vào một map để dễ truy xuất
-    if (nutritionData.dishes) {
-        Object.entries(nutritionData.dishes).forEach(([key, dish]) => {
-            searchDataMap[`dish_${key}`] = { ...dish, id: `dish_${key}`, type: 'Món ăn', link: `dashboard.html?page=analysis-page&food=${key}`, title: dish.name };
-        });
-    }
-    if (nutritionData.ingredients) {
-        Object.entries(nutritionData.ingredients).forEach(([key, ing]) => {
-            searchDataMap[`ing_${key}`] = { ...ing, id: `ing_${key}`, type: 'Nguyên liệu', link: `dashboard.html?page=analysis-page#recipe`, title: ing.name }; // Link tạm đến tab recipe
-        });
-    }
-    if (nutritionData.blogPosts) {
-        nutritionData.blogPosts.forEach(post => {
-            searchDataMap[`blog_${post.id}`] = { ...post, id: `blog_${post.id}`, type: 'Blog', isExternal: true, title: post.title }; // Link đã có sẵn trong post.link
-        });
-    }
-    console.log("searchDataMap Populated:", searchDataMap);
-}
-
-// === Render Blog Posts ===
-function renderBlogPosts() {
-    const blogGrid = document.querySelector('#blog-page .blog-grid');
-    if (!blogGrid || !nutritionData.blogPosts) return;
-
-    blogGrid.innerHTML = nutritionData.blogPosts.map(post => `
-        <a href="${post.link}" class="post-card" target="_blank">
-            <div class="post-image-wrapper">
-                <img src="${post.image || 'placeholder.jpg'}" alt="${post.title}" class="post-image">
-            </div>
-            <div class="post-content">
-                <h3 class="post-title">${post.title}</h3>
-                <p class="post-snippet">${post.snippet}</p>
-            </div>
-        </a>
-    `).join('');
 }
 
 function initializeDashboardUI() {
@@ -262,116 +214,7 @@ function initDashboardEventListeners() {
     if (colorPicker && savedColor) {
         colorPicker.value = savedColor;
     }
-
-    //Listener cho thanh tìm kiếm
-    const searchInputs = document.querySelectorAll('.search-bar input[type="text"]');
-    searchInputs.forEach(input => {
-        // Lắng nghe sự kiện 'input' (khi người dùng gõ hoặc xóa)
-        input.addEventListener('input', handleSearchInput);
-        // Ngăn form submit nếu nhấn Enter (vì không có form)
-        input.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault(); // Ngăn hành động mặc định
-                // Có thể chọn luôn kết quả đầu tiên nếu muốn
-            }
-        });
-        // Ẩn dropdown khi input mất focus (blur) - hơi trễ một chút để kịp click
-        input.addEventListener('blur', () => {
-             setTimeout(clearSearchResults, 150); // Delay 150ms
-        });
-    });
  }
-
- // === Xử lý khi người dùng gõ vào ô tìm kiếm ===
-function handleSearchInput(event) {
-    const inputElement = event.target;
-    const query = inputElement.value.trim().toLowerCase(); // Lấy từ khóa và chuyển chữ thường
-    console.log("searchDataMap Populated:", searchDataMap);
-
-    if (query.length < 1) { // Nếu ô trống hoặc chỉ có khoảng trắng
-        clearSearchResults(inputElement);
-        return;
-    }
-
-    const results = filterData(query); // Lọc dữ liệu
-    displaySearchResultsDropdown(results, inputElement, query); // Hiển thị dropdown
-}
-
-// === Lọc dữ liệu theo từ khóa ===
-function filterData(query) {
-    const filteredResults = [];
-    console.log("Filtering for:", query);
-    // Lặp qua searchDataMap đã chuẩn bị
-    for (const id in searchDataMap) {
-        const item = searchDataMap[id];
-        let textToSearch = '';
-
-        // Ghép các trường cần tìm kiếm
-        if (item.title) textToSearch += item.title.toLowerCase();
-        if (item.snippet) textToSearch += " " + item.snippet.toLowerCase(); // Blog
-        if (item.name) textToSearch += " " + item.name.toLowerCase(); // Món ăn/Nguyên liệu (nếu dùng title rồi thì không cần)
-
-        if (textToSearch.includes(query)) {
-            filteredResults.push(item); // Thêm vào kết quả nếu khớp
-        }
-    }
-    console.log("Filtered Results:", filteredResults);
-    return filteredResults;
-}
-
-// === Hiển thị dropdown kết quả ===
-function displaySearchResultsDropdown(results, inputElement, query) {
-    const searchBar = inputElement.closest('.search-bar');
-    if (!searchBar) return;
-
-    let resultsContainer = searchBar.querySelector('.search-results-dropdown');
-    if (!resultsContainer) {
-        resultsContainer = document.createElement('div');
-        resultsContainer.className = 'search-results-dropdown';
-        searchBar.appendChild(resultsContainer);
-        // Đảm bảo search-bar có position relative
-        if (getComputedStyle(searchBar).position === 'static') {
-            searchBar.style.position = 'relative';
-        }
-    }
-
-    resultsContainer.innerHTML = ''; // Xóa kết quả cũ
-
-    if (results.length === 0) {
-        resultsContainer.innerHTML = `<div class="result-item no-result">Không tìm thấy kết quả cho "${query}"</div>`;
-    } else {
-        results.slice(0, 5).forEach(item => { // Giới hạn 5 kết quả
-            const link = document.createElement('a');
-            link.href = item.link;
-            if (item.isExternal) link.target = '_blank'; // Mở link blog ở tab mới
-            link.className = 'result-item';
-            link.innerHTML = `
-                <span class="result-type">[${item.type}]</span>
-                <span class="result-title">${item.title}</span>
-            `;
-            // Ngăn dropdown bị ẩn khi click vào link (quan trọng!)
-            link.addEventListener('mousedown', (e) => {
-                // Không cần làm gì, chỉ cần ngăn sự kiện 'blur' của input chạy trước
-                e.preventDefault();
-            });
-            resultsContainer.appendChild(link);
-        });
-    }
-    resultsContainer.style.display = 'block';
-}
-
-// === Xóa/Ẩn dropdown kết quả ===
-function clearSearchResults(inputElement) {
-    // Nếu có inputElement, chỉ ẩn dropdown của nó
-    if (inputElement) {
-         const searchBar = inputElement.closest('.search-bar');
-         const dropdown = searchBar ? searchBar.querySelector('.search-results-dropdown') : null;
-         if (dropdown) dropdown.style.display = 'none';
-    } else { // Nếu không, ẩn tất cả dropdown (ví dụ khi blur)
-        const dropdowns = document.querySelectorAll('.search-results-dropdown');
-        dropdowns.forEach(dropdown => dropdown.style.display = 'none');
-    }
-}
 
 function showPage(pageId) {
     // Ẩn tất cả các trang
