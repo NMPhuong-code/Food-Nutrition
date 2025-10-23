@@ -599,6 +599,7 @@ function calculateBMI() {
     if (sessionStorage.getItem('userRole')) {
         updateDashboard();
     }
+    
 }
 
 // THAY THẾ HÀM CŨ BẰNG HÀM MỚI NÀY
