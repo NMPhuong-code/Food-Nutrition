@@ -19,4 +19,4 @@ EXPOSE 5000
 # Lệnh để chạy ứng dụng khi container khởi động
 # Dùng gunicorn (cần thêm vào requirements.txt) hoặc waitress cho production
 # Tạm thời dùng flask run cho testing
-CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["flask", "--app", "main:app", "run", "--host=0.0.0.0", "--port=5000"]
