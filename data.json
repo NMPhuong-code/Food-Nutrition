@@ -29,13 +29,13 @@
     },
     "berry": {
       "id": "berry",
-      "name": "Strawberry Jam",
+      "name": "Strawberry",
       "serving_default": 100,
       "serving_unit": "g",
-      "kcal_per_serving": 241,
-      "protein_g": 0.4,
-      "carbs_g": 59,
-      "fat_g": 0.1,
+      "kcal_per_serving": 32,
+      "protein_g": 0.7,
+      "carbs_g": 7.7,
+      "fat_g": 0.3,
       "source": "OpenFoodFacts"
     },
     "meat": {
@@ -91,6 +91,50 @@
       "protein_g": 0.1,
       "carbs_g": 0.7,
       "fat_g": 0.5,
+      "source": "OpenFoodFacts"
+    },
+    "avocado": {
+      "id": "avocado",
+      "name": "Avocado",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 160,
+      "protein_g": 1.8,
+      "carbs_g": 8.5,
+      "fat_g": 4.7,
+      "source": "OpenFoodFacts"
+    },
+    "melon": {
+      "id": "melon",
+      "name": "melon",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 14,
+      "protein_g": 0,
+      "carbs_g": 3.7,
+      "fat_g": 0,
+      "source": "OpenFoodFacts"
+    },
+    "fish": {
+      "id": "fish",
+      "name": "Filets de Maquereaux à la moutarde",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 201,
+      "protein_g": 11,
+      "carbs_g": 0.6,
+      "fat_g": 17,
+      "source": "OpenFoodFacts"
+    },
+    "cereal": {
+      "id": "cereal",
+      "name": "Tonik",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 504,
+      "protein_g": 4.35,
+      "carbs_g": 71.7,
+      "fat_g": 22.2,
       "source": "OpenFoodFacts"
     }
   },
