@@ -77,11 +77,11 @@ def upload_photo():
             })
             
     # 6. Xử lý dự phòng 
-    if not suggestions and nl.FOODS:
-        suggestions.append({
-            "food_id": nl.FOODS[0]['id'], "name": nl.FOODS[0]['name'],
-            "match_label": "Không tìm thấy món ăn cụ thể", "label_score": 0.5 
-        })
+    # if not suggestions and nl.FOODS:
+    #     suggestions.append({
+    #         "food_id": nl.FOODS[0]['id'], "name": nl.FOODS[0]['name'],
+    #         "match_label": "Không tìm thấy món ăn cụ thể", "label_score": 0.5 
+    #     })
 
     return jsonify({"labels": labels, "suggestions": suggestions})
 
@@ -104,3 +104,25 @@ def confirm():
     result['advice'] = item.get('advice', 'Tập trung vào cân bằng các nhóm chất cơ bản.')
     
     return jsonify({"result": result})
+# --- API TÌM KIẾM MÓN ĂN MỚI ---
+@api_bp.route('/api/search/food', methods=['GET'])
+def search_food():
+    query = request.args.get('q', '').lower() # Lấy từ khóa tìm kiếm từ URL (?q=...)
+    if not query:
+        return jsonify([]) # Trả về danh sách rỗng nếu không có từ khóa
+
+    results = []
+    # Tìm kiếm theo tên (không phân biệt hoa thường)
+    for food_id, item in nl.BY_ID.items(): # Duyệt qua tất cả món ăn đã biết
+        # Kiểm tra xem từ khóa có nằm trong tên món ăn không
+        if query in item.get('name', '').lower(): 
+            results.append({
+                'id': item.get('id'),
+                'name': item.get('name')
+                # Bạn có thể thêm các thông tin khác nếu cần
+            })
+
+    # Giới hạn số lượng kết quả nếu muốn
+    MAX_RESULTS = 10 
+    return jsonify(results[:MAX_RESULTS]) # Chỉ trả về tối đa MAX_RESULTS kết quả
+# --- KẾT THÚC API TÌM KIẾM ---

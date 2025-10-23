@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isValid) {
             sessionStorage.setItem('userRole', currentRole);
             sessionStorage.setItem('loggedInUser', username);
-            window.location.href = 'index.html';
+            window.location.href = '/dashboard.html';
         }
     });
 

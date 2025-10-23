@@ -1,0 +1,143 @@
+/* footer.css */
+
+.main-footer {
+    background-color: #f7f7f7; /* Nền xám nhạt cho toàn bộ footer */
+    border-block-start: 1px solid #eee; 
+    padding: 10px 0 5px 0; /* Giảm padding trên dưới */
+    font-family: 'Roboto', sans-serif;
+    color: #555;
+    text-align: center; 
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+}
+
+/* LOGO CHÍNH Ở ĐẦU FOOTER (Bạn muốn ẩn) */
+.footer-main-logo {
+    display: none; /* Ẩn logo to ở trên cùng */
+}
+
+.footer-content-wrapper {
+    max-inline-size: 800px; /* Giảm chiều rộng tối đa của wrapper */
+    margin: 0 auto;
+    padding: 0 15px; /* Giảm padding ngang */
+    display: flex;
+    justify-content: center; 
+    gap: 30px; /* Giảm khoảng cách giữa các cột */
+    flex-wrap: wrap; 
+}
+
+.footer-column {
+    background-color: #ffffff; 
+    border-radius: 8px; /* Giảm bo tròn */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ hơn */
+    padding: 5px; /* Giảm padding bên trong mỗi cột */
+    flex: 1; 
+    min-inline-size: 280px; /* Giảm min-width */
+    max-inline-size: 380px; /* Giảm max-width */
+    text-align: start; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 10px; /* Giảm khoảng cách giữa các phần tử trong cột */
+}
+
+.footer-column h4 { 
+    display: flex;
+    align-items: center;
+    color: #28a745; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em; /* Giảm kích thước tiêu đề */
+    margin-block-start: 0;
+    margin-block-end: 5px;
+}
+
+.footer-column h4 i {
+    margin-inline-end: 7px; /* Giảm khoảng cách icon */
+    font-size: 1em; /* Giảm kích thước icon */
+}
+
+.footer-description {
+    font-size: 0.80em; /* Giảm kích thước mô tả */
+    line-height: 1.5; /* Điều chỉnh line-height */
+    color: #666;
+    margin-block-end: 8px; /* Giảm margin bottom */
+}
+
+.footer-column .action-btn {
+    background-color: #6cb825; 
+    color: white;
+    padding: 10px 20px; /* Giảm padding nút */
+    border-radius: 20px; /* Giảm bo tròn nút */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85em; /* Giảm kích thước font nút */
+    transition: background-color 0.3s ease;
+    align-self: flex-start; 
+    margin-block-start: 5px;
+}
+
+.footer-column .action-btn:hover {
+    background-color: #5a9e1e;
+}
+
+.contact-info-text p {
+    margin: 0;
+    font-size: 0.80em; /* Giảm kích thước thông tin liên hệ */
+    line-height: 1.5;
+    color: #666;
+}
+
+.contact-info-text strong {
+    color: #333;
+    font-weight: 500;
+}
+
+#scrollToTopBtn:hover {
+    background-color: #0d8bf2;
+    transform: translateY(-2px); /* Hiệu ứng nhỏ hơn */
+}
+
+/* --- NÚT CUỘN LÊN ĐẦU TRANG --- */
+#scrollToTopBtn {
+    display: none; 
+    position: fixed; 
+    inset-block-end: 20px; /* Giảm khoảng cách với đáy */
+    inset-inline-end: 20px; /* Giảm khoảng cách với lề phải */
+    background-color: #31f05d; 
+    color: white;
+    inline-size: 40px; /* Giảm kích thước nút */
+    block-size: 40px; 
+    border-radius: 50%; 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.3em; /* Giảm kích thước icon mũi tên */
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ hơn */
+    z-index: 1000; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .footer-content-wrapper {
+        flex-direction: column; 
+        align-items: center; 
+        gap: 20px; /* Giảm khoảng cách giữa các cột khi xếp dọc */
+    }
+    .footer-column {
+        min-inline-size: unset; 
+        inline-size: 90%; 
+        max-inline-size: 400px; /* Giảm max-width trên mobile */
+        padding: 18px; /* Giảm padding trên mobile */
+    }
+    .main-footer {
+        padding-block-start: 30px;
+    }
+    #scrollToTopBtn {
+        inline-size: 40px;
+        block-size: 40px;
+        font-size: 1.2em;
+        inset-block-end: 15px;
+        inset-inline-end: 15px;
+    }
+}

@@ -29,13 +29,13 @@
     },
     "berry": {
       "id": "berry",
-      "name": "Strawberry",
+      "name": "Strawberry Jam",
       "serving_default": 100,
       "serving_unit": "g",
-      "kcal_per_serving": 32,
-      "protein_g": 0.7,
-      "carbs_g": 7.7,
-      "fat_g": 0.3,
+      "kcal_per_serving": 241,
+      "protein_g": 0.4,
+      "carbs_g": 59,
+      "fat_g": 0.1,
       "source": "OpenFoodFacts"
     },
     "meat": {
@@ -54,10 +54,10 @@
       "name": "Cream of tomato soup imp",
       "serving_default": 100,
       "serving_unit": "g",
-      "kcal_per_serving": 54,
-      "protein_g": 0.9,
-      "carbs_g": 7.2,
-      "fat_g": 2.3,
+      "kcal_per_serving": 51,
+      "protein_g": 0.8,
+      "carbs_g": 6.8,
+      "fat_g": 2.1,
       "source": "OpenFoodFacts"
     },
     "pork": {
@@ -106,7 +106,7 @@
     },
     "melon": {
       "id": "melon",
-      "name": "melon",
+      "name": "Dada melon",
       "serving_default": 100,
       "serving_unit": "g",
       "kcal_per_serving": 14,
@@ -117,7 +117,7 @@
     },
     "fish": {
       "id": "fish",
-      "name": "Filets de Maquereaux à la moutarde",
+      "name": "Fish",
       "serving_default": 100,
       "serving_unit": "g",
       "kcal_per_serving": 201,
@@ -125,6 +125,17 @@
       "carbs_g": 0.6,
       "fat_g": 17,
       "source": "OpenFoodFacts"
+    },
+    "trung": {
+      "name": "Trứng",
+      "id": "trung",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 150,
+      "protein_g": 12,
+      "fat_g": 12,
+      "carbs_g": 0,
+      "category": "Sản phẩm từ sữa"
     },
     "cereal": {
       "id": "cereal",
@@ -136,48 +147,198 @@
       "carbs_g": 71.7,
       "fat_g": 22.2,
       "source": "OpenFoodFacts"
-    }
-  },
-  "ingredients": {
-    "ga_luoc": {
-      "id": "ga_luoc",
-      "name": "Thịt gà luộc (100g)",
+    },
+    "citrus": {
+      "id": "citrus",
+      "name": "Doce Extra Fresa Morango",
       "serving_default": 100,
       "serving_unit": "g",
-      "kcal_per_serving": 165,
-      "protein_g": 31,
-      "carbs_g": 0,
-      "fat_g": 3.6
+      "kcal_per_serving": 241,
+      "protein_g": 0.4,
+      "carbs_g": 57.8,
+      "fat_g": 0.3,
+      "source": "OpenFoodFacts"
     },
-    "gao_trang": {
-      "id": "gao_trang",
-      "name": "Gạo trắng (100g)",
+    "tangerine": {
+      "id": "tangerine",
+      "name": "Zumo De Clementina",
       "serving_default": 100,
       "serving_unit": "g",
-      "kcal_per_serving": 350,
-      "protein_g": 6.8,
-      "carbs_g": 78,
-      "fat_g": 0.6
+      "kcal_per_serving": 42,
+      "protein_g": 0.6,
+      "carbs_g": 9.7,
+      "fat_g": 0.1,
+      "source": "OpenFoodFacts"
     },
-    "dau_phong": {
-      "id": "dau_phong",
-      "name": "Đậu phộng (10g)",
-      "serving_default": 10,
+    "orange": {
+      "id": "orange",
+      "name": "Orange",
+      "serving_default": 100,
       "serving_unit": "g",
-      "kcal_per_serving": 56,
-      "protein_g": 2.6,
-      "carbs_g": 1.6,
-      "fat_g": 4.9
+      "kcal_per_serving": 39,
+      "protein_g": 0,
+      "carbs_g": 9.3,
+      "fat_g": 0,
+      "source": "OpenFoodFacts"
+    },
+    "pear": {
+      "id": "pear",
+      "name": "Pom'Potes (Pomme/Poire)",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 58,
+      "protein_g": 0.5,
+      "carbs_g": 12,
+      "fat_g": 0.5,
+      "source": "OpenFoodFacts"
+    },
+    "apple": {
+      "id": "apple",
+      "name": "Apple & Raisin Oat Bars",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 426,
+      "protein_g": 5.6,
+      "carbs_g": 59.2,
+      "fat_g": 17.4,
+      "source": "OpenFoodFacts"
+    },
+    "carrot": {
+      "id": "carrot",
+      "name": "Mes Carottes râpées à la ciboulette",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 79,
+      "protein_g": 1.1,
+      "carbs_g": 5.6,
+      "fat_g": 5.2,
+      "source": "OpenFoodFacts"
+    },
+    "pho": {
+      "id": "pho",
+      "name": "Soupe pho",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 63,
+      "protein_g": 2.8,
+      "carbs_g": 9.1,
+      "fat_g": 1.8,
+      "source": "OpenFoodFacts"
+    },
+    "strawberry": {
+      "id": "strawberry",
+      "name": "Strawberry Jam",
+      "serving_default": 100,
+      "serving_unit": "g",
+      "kcal_per_serving": 241,
+      "protein_g": 0.4,
+      "carbs_g": 59,
+      "fat_g": 0.1,
+      "source": "OpenFoodFacts"
     }
   },
-  "healthy_swaps": {
-    "mayonnaise": {
-      "alternative": "Sốt sữa chua Hy Lạp",
-      "impact": "-100 Calo, -15g Fat"
-    },
-    "gao_trang": {
-      "alternative": "Gạo lứt",
-      "impact": "+3g Fiber, GI thấp hơn"
-    }
+  "ga_luoc": {
+    "id": "ga_luoc",
+    "name": "Thịt gà luộc (100g)",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 165,
+    "protein_g": 31,
+    "carbs_g": 0,
+    "fat_g": 3.6
+  },
+  "gao_trang": {
+    "id": "gao_trang",
+    "name": "Gạo trắng (100g)",
+    "serving_default": 100,
+    "serving_unit": "g",
+    "kcal_per_serving": 350,
+    "protein_g": 6.8,
+    "carbs_g": 78,
+    "fat_g": 0.6
+  },
+  "dau_phong": {
+    "id": "dau_phong",
+    "name": "Đậu phộng (10g)",
+    "serving_default": 10,
+    "serving_unit": "g",
+    "kcal_per_serving": 56,
+    "protein_g": 2.6,
+    "carbs_g": 1.6,
+    "fat_g": 4.9
+  },
+  "ca_cao": {
+    "name": "Ca cao",
+    "id": "ca_cao",
+    "serving_default": 252,
+    "serving_unit": "g",
+    "kcal_per_serving": 235,
+    "protein_g": 8,
+    "fat_g": 11,
+    "carbs_g": 26,
+    "category": "Sản phẩm từ sữa"
+  },
+  "bot_ngo": {
+    "name": "Bột ngô",
+    "id": "bot_ngo",
+    "serving_default": 118,
+    "serving_unit": "g",
+    "kcal_per_serving": 360,
+    "protein_g": 9,
+    "fat_g": 4,
+    "carbs_g": 74,
+    "category": "Bánh mì, ngũ cốc, đồ ăn nhanh, ngũ cốc"
+  },
+  "banh_trung": {
+    "name": "Bánh trứng",
+    "id": "banh_trung",
+    "serving_default": 248,
+    "serving_unit": "g",
+    "kcal_per_serving": 285,
+    "protein_g": 13,
+    "fat_g": 14,
+    "carbs_g": 28,
+    "category": "Sản phẩm từ sữa"
+  },
+  "kem": {
+    "name": "Kem",
+    "id": "kem",
+    "serving_default": 300,
+    "serving_unit": "g",
+    "kcal_per_serving": 250,
+    "protein_g": 0,
+    "fat_g": 0,
+    "carbs_g": 0,
+    "category": "Món tráng miệng, đồ ngọt"
+  },
+  "kem_sua": {
+    "name": "Kem sữa",
+    "id": "kem_sua",
+    "serving_default": 190,
+    "serving_unit": "g",
+    "kcal_per_serving": 275,
+    "protein_g": 9,
+    "fat_g": 10,
+    "carbs_g": 32,
+    "category": "Sản phẩm từ sữa"
+  },
+  "kem_hoac_half_and_half": {
+    "name": "Kem hoặc half-and-half",
+    "id": "kem_hoac_half_and_half",
+    "serving_default": 120,
+    "serving_unit": "g",
+    "kcal_per_serving": 170,
+    "protein_g": 4,
+    "fat_g": 15,
+    "carbs_g": 5,
+    "category": "Sản phẩm từ sữa"
+  },
+  "hoac_kem_tuoi": {
+    "name": "hoặc kem tươi",
+    "id": "hoac_kem_tuoi",
+    "serving_default": 119,
+    "serving_unit": "g",
+    "kcal_per_serving": 430,
+    "protein_g": 2
   }
 }

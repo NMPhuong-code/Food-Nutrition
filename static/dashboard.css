@@ -1,3 +1,4 @@
+
 /* Basic Reset */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -102,30 +103,6 @@ th { background-color: #f2f2f2; }
 .card p { font-size: 2em; font-weight: 700; color: #333; }
 .card .unit { font-size: 0.6em; color: #777; }
 .chart-container-large { background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-
-/* Scroll to Top Button */
-#scrollToTopBtn {
-    display: none; 
-    position: fixed;
-    inset-block-end: 30px;
-    inset-inline-end: 30px;
-    z-index: 100;
-    border: none;
-    outline: none;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-    border-radius: 50%;
-    inline-size: 50px;
-    block-size: 50px;
-    font-size: 18px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: opacity 0.3s, background-color 0.3s;
-}
-
-#scrollToTopBtn:hover {
-    background-color: #218838;
-}
 
 /* --- BMI Page Specific Styles (Updated) --- */
 .bmi-content-wrapper {
@@ -498,6 +475,7 @@ th { background-color: #f2f2f2; }
     margin-block-end: 20px;
     /* Tiêu đề sẽ đổi màu theo màu chủ đạo */
     border-block-end: 3px solid var(--primary-color);
+        color: var(--primary-color); /* <-- THÊM DÒNG NÀY */
     padding-block-end: 10px;
     display: flex;
     align-items: center;
@@ -570,4 +548,259 @@ button:disabled:hover {
     display: inline-block; /* Buộc nút hiển thị như một khối */
     position: relative;    /* Hủy bỏ mọi thuộc tính "position" lạ */
     margin-block-start: 15px;      /* Tạo khoảng cách với văn bản bên trên */
+}
+/* --- Search Results Dropdown --- */
+.search-bar {
+    position: relative; /* Quan trọng để định vị kết quả */
+}
+/* --- CSS CHO PHẦN GIỚI THIỆU BLOG --- */
+.blog-intro-header {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-block-end: 30px; /* Khoảng cách với lưới blog bên dưới */
+}
+
+
+#search-results-container {
+    display: none; /* Ẩn đi mặc định */
+    position: absolute;
+    inset-block-start: 110%; /* Nằm ngay dưới thanh tìm kiếm */
+    inset-inline-start: 0;
+    inline-size: 300px; /* Hoặc chiều rộng bạn muốn */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+    max-block-size: 400px;
+    overflow-y: auto;
+}
+
+.intro-text {
+    flex: 2; /* Chiếm 2/3 không gian */
+}
+
+.intro-text h3 {
+    /* Kế thừa từ .page h3 */
+    color: var(--primary-color); /* Dùng màu chủ đạo */
+    margin-block-start: 0;
+}
+
+.intro-text p {
+    font-size: 1.3em;
+    color: #555;
+    line-height: 1.6;
+}
+
+.intro-image {
+    flex: 1; /* Chiếm 1/3 không gian */
+    max-inline-size: 500px; /* Giới hạn chiều rộng ảnh */
+}
+
+.intro-image img {
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+}
+/* Đổi màu tiêu đề h3 cho trang Kế hoạch */
+#planner-page h3 {
+    color: var(--primary-color); /* Sử dụng màu chủ đạo của trang */
+}
+/* Đổi màu tiêu đề h3 cho trang Liên hệ */
+#contact-page h3 {
+    color: var(--primary-color);
+}
+/* Đổi màu tiêu đề h3 cho trang Lịch sử */
+#history-page h3 {
+    color: var(--primary-color);
+}
+/* Đổi màu tiêu đề h3 cho trang Tổng quan */
+#dashboard-page h3 {
+    color: var(--primary-color);
+}
+/* === BẮT ĐẦU CSS FOOTER MỚI (PHIÊN BẢN DASHBOARD) === */
+.site-footer {
+    background-color: #f4f7f6; /* Giống màu nền body của dashboard */
+    color: #555;
+    padding: 10px 0;
+    border-block-start: 1px solid #e0e0e0;
+    margin-block-start: auto; /* Quan trọng: Đẩy footer xuống dưới */
+    flex-shrink: 0; /* Đảm bảo footer không bị co lại */
+    inline-size: 100%;
+}
+
+.footer-container {
+    /* Căn lề 30px giống .page-content-wrapper */
+    padding: 0 20px; 
+    margin: 0 auto;
+    max-inline-size: 100%; 
+}
+.site-footer .footer-about {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống hàng trên di động */
+    align-items: center;
+    gap: 20px;
+    margin-block-end: 20px;
+}
+
+.site-footer .footer-about .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    /* Dùng var() để logo đổi màu theo admin */
+    color: var(--primary-color, #28a745); 
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    flex-shrink: 0; 
+}
+
+.site-footer .footer-about .logo i {
+    margin-inline-end: 10px;
+}
+
+.site-footer .footer-about p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin: 0;
+    flex: 1; /* Cho phép văn bản chiếm không gian còn lại */
+    min-inline-size: 300px; /* Đảm bảo văn bản không quá hẹp */
+}
+
+.site-footer .footer-bottom {
+    text-align: center;
+    font-size: 0.85em;
+    color: #888;
+    border-block-start: 1px solid #eee;
+    padding-block-start: 20px;
+}
+
+.site-footer .footer-bottom p {
+    margin: 0;
+}
+/* === KẾT THÚC CSS FOOTER MỚI === */
+@media (max-width: 768px) {
+    #app-container {
+        flex-direction: column; /* Sidebar sẽ nằm trên */
+        /* overflow-y: auto; KHÔNG đặt overflow ở đây */
+    }
+    #sidebar {
+        inline-size: 100%;
+        block-size: auto; /* Không chiếm 100vh nữa */
+        position: relative; /* Không cố định */
+        flex-direction: row; /* Sidebar items xếp ngang */
+        justify-content: space-around; /* Phân bố đều các nút */
+        padding: 10px 0;
+        border-inline-end: none;
+        border-block-end: 1px solid #e0e0e0;
+        z-index: 100;
+        overflow-x: auto; /* Cho phép cuộn ngang nếu có quá nhiều nút */
+    }
+    #sidebar .logo {
+        display: none; /* Ẩn logo trên mobile sidebar */
+    }
+    #sidebar-nav {
+        flex-direction: row; /* Các nút menu xếp ngang */
+        inline-size: 100%;
+        justify-content: space-around;
+    }
+    #sidebar-nav .nav-btn {
+        flex-direction: column; /* Icon và text xếp chồng */
+        inline-size: auto;
+        padding: 5px;
+        margin-block-end: 0;
+        gap: 5px;
+        font-size: 0.8em;
+    }
+    #sidebar-nav .nav-btn span {
+        display: block; /* Hiện text lại trên mobile sidebar (nếu muốn) */
+    }
+    #sidebar-nav .nav-btn i {
+        font-size: 1.2em;
+    }
+    
+    #main-content {
+        margin-inline-start: 0; /* Xóa margin khi sidebar không còn bên trái */
+        padding-block-start: 0; /* Có thể cần điều chỉnh */
+    }
+
+    #main-header {
+        position: relative; /* Header không cố định nữa */
+    }
+    
+    .page-content-wrapper {
+        padding: 15px;
+    }
+
+    .summary-cards, .admin-grid, .blog-grid {
+        grid-template-columns: 1fr; /* Một cột duy nhất trên mobile */
+    }
+
+    /* Đảm bảo footer hiển thị ở cuối trang mobile */
+    .site-footer {
+        padding: 15px 0;
+    }
+    .site-footer .footer-container {
+        padding: 0 15px;
+    }
+    .site-footer .footer-about {
+        flex-direction: column;
+        text-align: center;
+        margin-block-end: 15px;
+    }
+    .site-footer .footer-about p {
+        min-inline-size: auto;
+    }
+
+    #scrollToTopBtn {
+        inset-block-end: 20px;
+        inset-inline-end: 20px;
+    }
+
+}
+.search-result-item {
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: #f5f5f5;
+}
+
+.no-results {
+    color: #888;
+    font-style: italic;
+}
+#scrollToTopBtn:hover {
+    background-color: #0d8bf2;
+    transform: translateY(-2px); /* Hiệu ứng nhỏ hơn */
+}
+
+/* --- NÚT CUỘN LÊN ĐẦU TRANG --- */
+#scrollToTopBtn {
+    display: none; 
+    position: fixed; 
+    inset-block-end: 20px; /* Giảm khoảng cách với đáy */
+    inset-inline-end: 20px; /* Giảm khoảng cách với lề phải */
+    background-color: #31f05d; 
+    color: white;
+    inline-size: 40px; /* Giảm kích thước nút */
+    block-size: 40px; 
+    border-radius: 50%; 
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.3em; /* Giảm kích thước icon mũi tên */
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ hơn */
+    z-index: 1000; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
