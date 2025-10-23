@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nội dung bài viết - Nutrition</title>
-    <link rel="icon" type="image/png" href="favicon.png"> 
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png"> 
+    <link rel="stylesheet" href="/static/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,26 +15,27 @@
 
     <header class="main-header">
         <div class="container">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <i class="fa-solid fa-leaf"></i>
                 <span>Nutrition</span>
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="dashboard.html?page=bmi-page">Sức khỏe (BMI)</a></li>
-                    <li><a href="dashboard.html?page=analysis-page">Phân tích</a></li>
-                    <li><a href="dashboard.html?page=planner-page">Kế hoạch</a></li>
-                    <li><a href="dashboard.html?page=blog-page">Blog</a></li>
-                    <li><a href="dashboard.html?page=contact-page">Liên hệ</a></li>
+                    <li><a href="/dashboard.html">Sức khỏe (BMI)</a></li>
+                    <li><a href="/dashboard.html">Phân tích</a></li>
+                    <li><a href="/dashboard.html">Kế hoạch</a></li>
+                   <li><a href="/blog">Blog</a></li> 
+               <li><a href="/contact">Liên hệ</a></li> 
                 </ul>
             </nav>
             <div class="header-actions">
                 <div class="search-bar">
                     <input type="text" placeholder="Tìm kiếm...">
                     <i class="fa-solid fa-magnifying-glass"></i>
+                    <div id="search-results-container"></div>
                 </div>
                 <div id="auth-section">
-                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -67,25 +68,33 @@
                 <p>Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a quam.</p>
             </div>
         </section>
-        <button id="scrollToTopBtn" title="Lên đầu trang"> 
+         <button id="scrollToTopBtn" title="Lên đầu trang"> 
                 <i class="fa-solid fa-arrow-up"></i> 
             </button>
     </main>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-about">
-                <a href="index.html" class="logo">
-                    <i class="fa-solid fa-leaf"></i>
-                    <!-- <span>Nutrition</span> -->
-                </a>
-                <p>Sứ mệnh của Nutrition là hướng đến mọi người dùng và mang đến một trải nghiệm tốt nhất, giúp bạn có một kế hoạch ăn uống khoẻ, nhưng vẫn đầy đủ chế độ dinh dưỡng.</p>
+     <footer class="main-footer">
+            <a href="/" class="footer-main-logo">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Nutrition</span>
+            </a>
+        
+            <div class="footer-content-wrapper">
+                <div class="footer-column about">
+                    <h4><i class="fa-solid fa-leaf"></i> Nutrition</h4>
+                    <p class="footer-description">Sứ mệnh của Nutrition là hướng đến mọi người dùng và mang đến một trải nghiệm tốt nhất, giúp bạn có một kế hoạch ăn uống khoẻ, nhưng vẫn đầy đủ chế độ dinh dưỡng.</p>
+                    <a href="#about" class="action-btn">Tìm hiểu thêm</a>
+                </div>
+        
+                <div class="footer-column contact">
+                    <h4>Liên Hệ</h4>
+                    <div class="contact-info-text">
+                        <p><strong>Địa chỉ:</strong> abc Phước Kiển, Nhà Bè, TP. HCM</p>
+                        <p><strong>Điện thoại:</strong> 086xx7xxxx</p>
+                        <p><strong>Email:</strong> treetreetree@gmail.com</p>
+                    </div>
+                </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Nutrition. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script src="script.js"></script>
+            </footer>
+    <script src="/static/script.js"></script>
 </body>
 </html>

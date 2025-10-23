@@ -1,21 +1,22 @@
+<link rel="stylesheet" href="footer.css">
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Nutrition</title>
-    <link rel="icon" type="image/png" href="favicon.png?v=1.0"> 
-    <link rel="shortcut icon" type="image/png" href="favicon.png?v=1.0">
+   <link rel="icon" type="image/png" href="/static/favicon.png?v=1.0">
+    <link rel="shortcut icon" type="image/png" href="/static/favicon.png?v=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/static/footer.css">
+    <link rel="stylesheet" href="/static/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
 <body>
     <div id="app-container">
         <nav id="sidebar">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <i class="fa-solid fa-leaf"></i>
                 <span>Nutrition</span>
             </a>
@@ -25,7 +26,7 @@
                 <li><button onclick="showPage('analysis-page')" class="nav-btn"><i class="fa-solid fa-gear"></i><span>Phân tích</span></button></li>
                 <li><button onclick="showPage('planner-page')" class="nav-btn"><i class="fa-solid fa-calendar-days"></i><span>Kế hoạch</span></button></li>
                 <li><button onclick="showPage('blog-page')" class="nav-btn"><i class="fa-solid fa-newspaper"></i><span>Blog</span></button></li>
-                <li><button onclick="showPage('contact-page')" class="nav-btn"><i class="fa-solid fa-comments"></i><span>Liên hệ</span></button></li>
+                <li><button onclick="showPage('contact-page')" class="nav-btn"><i class="fa-solid fa-comments"></i><span>Phản hồi</span></button></li>
                 <li id="history-nav-item"><button onclick="showPage('history-page')" class="nav-btn"><i class="fa-solid fa-history"></i><span>Lịch sử & Log</span></button></li>
                 <li id="admin-nav-item" style="display: none;"><button onclick="showPage('admin-page')" class="nav-btn"><i class="fa-solid fa-user-shield"></i><span>Admin</span></button></li>
             </ul>
@@ -35,11 +36,13 @@
             <header id="main-header">
                 <h2 id="page-title">Tổng quan</h2>
                 <div class="user-menu-container" id="dashboard-auth-section">
+                    <button id="user-menu-button"><i class="fa-solid fa-user-circle"></i></button>
+                    <div id="user-menu-dropdown" class="user-menu-dropdown">
+                        </div>
                 </div>
             </header>
 
             <div class="page-content-wrapper">
-                
                 <section id="dashboard-page" class="page">
                     <div class="summary-cards">
                         <div class="card"><h4>Mục Tiêu Calo (TDEE)</h4><p><span id="dash-tdee-value">0</span> <span class="unit">kcal/ngày</span></p></div>
@@ -54,20 +57,16 @@
                     <div class="bmi-content-wrapper">
                         <div class="bmi-explanation">
                             <h2>ĐO CHỈ SỐ CÂN NẶNG - CHIỀU CAO (BMI) ONLINE</h2>
-                            
                             <div class="explanation-box">
                                 <p>BMI không đo lường trực tiếp mỡ của cơ thể nhưng các nghiên cứu đã chứng minh rằng BMI tương quan với đo mỡ trực tiếp. BMI là phương pháp không tốn kém và dễ thực hiện để tầm soát vấn đề sức khoẻ.</p>
                                 <div class="decoration-image">
-                                    <img src="image/BMI.jpg" alt="Thước dây và Kính lúp đo BMI">
+                                    <img src="/static/image/BMI.jpg" alt="Thước dây và Kính lúp đo BMI">
                                 </div>
-                                
                                 <h4>1. Sử dụng BMI như thế nào?</h4>
                                 <p>BMI được sử dụng như là một công cụ tầm soát để xác định trọng lượng thích hợp cho người lớn. Tuy nhiên, BMI không phải là công cụ chẩn đoán. Ví dụ, một người có chỉ số BMI cao, để xác định trọng lượng có phải là một nguy cơ cho sức khoẻ không thì các bác sĩ cần thực hiện thêm các đánh giá khác. Những đánh giá này gồm đo độ dày nếp da, đánh giá chế độ ăn, hoạt động thể lực, tiền sử gia đình và các sàng lọc sức khoẻ khác.</p>
-                                
                                 <h4>2. Tại sao Cơ quan kiểm soát bệnh tật Hoa Kỳ - CDC sử dụng BMI?</h4>
                                 <p>Tính chỉ số BMI là một phương pháp tốt nhất để đánh giá thừa cân và béo phì cho một quần thể dân chúng. Để tính chỉ số BMI, người ta chỉ yêu cầu đo chiều cao và cân nặng, không tốn kém và dễ thực hiện. Sử dụng chỉ số BMI cho phép người ta so sánh tình trạng cân nặng của họ với quần thể nói chung. Công thức tính BMI theo đơn vị kilograms và mét.</p>
                             </div>
-                            
                             <div class="bmi-input-area">
                                 <h3>Nhập Thông Số Tính Toán</h3>
                                 <div class="input-group"><label for="height-input">Chiều cao (cm):</label><input type="number" id="height-input" placeholder="Ví dụ: 175" required></div>
@@ -90,10 +89,8 @@
                                 <button id="calculate-bmi-btn" class="primary-btn">Tính BMI & Calo Duy Trì (TDEE)</button>
                             </div>
                         </div>
-                        
                         <div class="bmi-result-display">
                             <h3>Kết Quả & Phân Loại BMI</h3>
-
                             <div class="bmi-visualizer-card">
                                 <p class="bmi-label">Chỉ số BMI của bạn là:</p>
                                 <div class="bmi-gauge">
@@ -102,12 +99,10 @@
                                 <div class="bmi-status-bar" id="bmi-status-bar">
                                     <span id="bmi-status-large" class="status-text">--</span>
                                 </div>
-                                
                                 <div class="bmi-rating-guide">
-                                    <img src="image/BODY_BMI.jpg" alt="Phân loại chỉ số BMI" />
+                                    <img src="/static/image/BODY_BMI.jpg" alt="Phân loại chỉ số BMI" />
                                 </div>
                             </div>
-
                             <div id="bmi-result-area" class="result-box">
                                 <h4>Phân Tích Calo Mục Tiêu:</h4>
                                 <p>Đánh giá BMI: <span id="bmi-status" class="highlight">--</span></p>
@@ -122,22 +117,18 @@
                         <button onclick="showAnalysisTab('tab-image')" class="tab-btn active" id="tab-image-btn">Tải/Chụp Ảnh</button>
                         <button onclick="showAnalysisTab('tab-recipe')" class="tab-btn" id="tab-recipe-btn">Phân tích Công thức</button>
                     </div>
-
                     <div id="tab-image" class="analysis-tab active">
                         <p>Chọn ảnh món ăn bạn muốn phân tích. AI sẽ nhận diện và đưa ra các gợi ý dinh dưỡng.</p>
-                        
                         <div class="input-group">
                             <label for="photo-upload">Tải ảnh lên từ thiết bị hoặc chụp ảnh mới:</label>
                             <input type="file" id="photo-upload" accept="image/*" capture="camera">
                         </div>
-                        
-                        <div id="image-analysis-steps">
-                            <img id="image-preview" src="#" alt="Xem trước ảnh" style="display:none; max-width: 300px; margin-top: 15px; border-radius: 8px;"/>
-                            <div id="api-status-message" style="margin-top: 15px; font-weight: bold;"></div>
-                            <div id="food-suggestions" style="margin-top: 15px;"></div>
+                      <div id="image-analysis-steps">
+                            <img id="image-preview" src="#" alt="Xem trước ảnh" style="display:none; max-inline-size: 300px; margin-block-start: 15px; border-radius: 8px;"/>
+                            <div id="api-status-message" style="margin-block-start: 15px; font-weight: bold;"></div>
+                            <div id="food-suggestions" style="margin-block-start: 15px;"></div>
                         </div>
-
-                        <div id="portion-control" style="display:none; margin-top: 20px; padding: 20px; background-color: #f4f7f6; border-radius: 8px; border: 1px solid #e0e0e0;">
+                        <div id="portion-control" style="display:none; margin-block-start: 20px; padding: 20px; background-color: #f4f7f6; border-radius: 8px; border: 1px solid #e0e0e0;">
                             <h4>Điều chỉnh khẩu phần cho: <span id="selected-food-name" style="color: #28a745;"></span></h4>
                             <div class="input-group">
                                 <label for="portion-input">Khối lượng ước tính (gram):</label>
@@ -146,24 +137,26 @@
                             <button id="confirm-analysis-btn" class="primary-btn">Phân Tích Dinh Dưỡng</button>
                         </div>
                     </div>
-
                     <div id="tab-recipe" class="analysis-tab" style="display:none;">
                         <p>Nhập nguyên liệu (tên và khối lượng bằng gram).</p>
+                        <div class="input-group">
+                            <label for="recipe-dish-name">Tên Món Ăn:</label>
+                            <input type="text" id="recipe-dish-name" placeholder="Ví dụ: Gà luộc xé phay">
+                        </div>
                         <table id="recipe-input-table"><thead><tr><th>Nguyên liệu</th><th>Khối lượng (g)</th><th>Hành động</th></tr></thead><tbody></tbody></table>
                         <button id="add-ingredient-btn" class="secondary-btn">+ Thêm Nguyên Liệu</button><button id="analyze-recipe-btn" class="primary-btn">Tính Tổng Dinh Dưỡng</button>
                     </div>
-
                     <div id="analysis-result-area" class="result-box" style="display: none;">
                         <h3>Chi tiết Dinh dưỡng</h3>
                         <p>Calo: <span id="total-calories" class="highlight">0</span> kcal</p>
                         <p>Protein: <span id="total-protein">0</span>g | Carb: <span id="total-carbs">0</span>g | Fat: <span id="total-fat">0</span>g</p>
                         <h4>Món ăn: <span id="analyzed-food-name"></span></h4>
-                        <div class="chart-container" style="height: 200px;"><canvas id="macroChart"></canvas></div>
+                        <div class="chart-container" style="block-size: 200px;"><canvas id="macroChart"></canvas></div>
                         <button id="save-meal-btn" class="secondary-btn">Lưu Bữa Ăn (Log)</button>
                     </div>
                 </section>
 
-                <section id="planner-page" class="page" style="display:none;">
+               <section id="planner-page" class="page" style="display:none;">
                     <h3>Danh Mục Kế Hoạch Ăn Uống (Tham Khảo)</h3>
                     <p>Chọn một trong các thực đơn mẫu để tham khảo hoặc tạo kế hoạch của riêng bạn. (Bao gồm thực đơn tham khảo 7 ngày chuẩn Việt)</p>
                     
@@ -184,7 +177,6 @@
                             </tbody>
                         </table>
                     </div>
-                    
                     <div class="planner-actions">
                         <button id="save-weekly-plan-btn" class="primary-btn">Lưu Kế Hoạch Tuần</button>
                         <button id="export-weekly-plan-btn" class="secondary-btn">Xuất File CSV</button>
@@ -199,7 +191,6 @@
                 </section>
                 
                 <section id="admin-page" class="page" style="display:none;">
-
                     <div class="admin-grid">
 
                         <div class="admin-card">
@@ -306,11 +297,19 @@
                             </table>
                             <button class="primary-btn" disabled>+ Thêm kế hoạch mới</button>
                         </div>
-
                     </div>
                 </section>
 
                 <section id="blog-page" class="page" style="display:none;">
+                    <div class="blog-intro-header">
+                        <div class="intro-text">
+                            <h3>Blog dinh dưỡng</h3>
+                            <p>Tin tức, cập nhật và những câu chuyện giúp bạn khám phá dinh dưỡng thông minh, ăn uống lành mạnh và hiểu rõ cơ thể bạn mỗi ngày.</p>
+                        </div>
+                        <div class="intro-image">
+                            <img src="https://marketingai.mediacdn.vn/zoom/600_315/wp-content/uploads/2022/01/toi-uu-tieu-de-chuan-seo.png" alt="Healthy Food Blog">
+                        </div>
+                    </div>
                     <div class="blog-section">
                         <div class="blog-grid">
                             <a href="https://memart.vn/tin-uc/suc-khoe-6/cong-thuc-1-bua-an-day-du-dinh-duong-de-dang-va-nhanh-chong-vi-cb.html" 
@@ -353,6 +352,56 @@
                                     <p class="post-snippet">Nguyên tắc cơ bản của việc giảm mỡ là calo-in < calo-out. Bắt đầu từ... (nhấn để xem chi tiết)</p>
                                 </div>
                             </a>
+
+                            <a href="https://fitfood.vn/tin-tuc/carb-protein-va-chat-beo-cac-nguyen-tac-cho-mot-bua-an-can-doi" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://phunuvietnam.mediacdn.vn/thumb_w/700/179072216278405120/2020/11/5/avatar1604593550401-16045935584961439793577.jpg" alt="Kiến thức dinh dưỡng" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Quan niệm sai lầm về ăn uống</h3>
+                                    <p class="post-snippet">Có những quan niệm sai về cách ăn uống. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+
+                            <a href="https://www.vinmec.com/vie/bai-viet/thuc-an-chung-ta-can-bao-nhieu-moi-ngay-vi" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://cdn.nguyenkimmall.com/images/detailed/822/hom-nay-an-gi-thumbnail.jpg" alt="Kiến thức dinh dưỡng" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Hôm nay ăn gì?</h3>
+                                    <p class="post-snippet">Ăn gì và ăn bao nhiêu mỗi ngày. Hãy cùng tìm hiểu nhé... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+
+                            <a href="https://lethanhnamwork.com/blog-am-thuc-khong-chi-la-an-uong-ma-con-la-hanh-trinh/" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://lethanhnamwork.com/wp-content/uploads/2025/02/Blog-Am-Thuc-%E2%80%93-Khong-Chi-La-An-Uong-Ma-Con-La-Hanh-Trinh.jpg" alt="Kiến thức dinh dưỡng" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Không chỉ là ăn uống, mà còn là hành trình</h3>
+                                    <p class="post-snippet">Blog ẩm thực là nền tảng trực tuyến nơi mọi người chia sẻ những bài viết về đồ ăn, thức uống và mọi thứ liên quan đến ẩm thực. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+
+                            <a href="https://nhathuoclongchau.com.vn/bai-viet/bua-nao-nen-an-nhieu-nhat-trong-ngay-cach-toi-uu-hoa-thoi-gian-an-uong.html" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://cdn.nhathuoclongchau.com.vn/unsafe/800x0/https://cms-prod.s3-sgn09.fptcloud.com/bua_nao_nen_an_nhieu_nhat_trong_ngay_cach_toi_uu_hoa_thoi_gian_an_uong_1_08bf0ece78.png" alt="Kiến thức dinh dưỡng" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Bữa nào nên ăn nhiều nhất trong ngày? Cách tối ưu hóa thời gian ăn uống</h3>
+                                    <p class="post-snippet">Các bữa ăn trong ngày giúp cung cấp năng lượng và dinh dưỡng cần thiết cho cơ thể hoạt động khỏe mạnh. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
+
+                            <a href="https://ngoisao.vnexpress.net/ban-nen-nap-bao-nhieu-thuc-an-moi-ngay-4824639.html" class="post-card" target="_blank">
+                                <div class="post-image-wrapper">
+                                    <img src="https://cdn.tgdd.vn/2021/07/CookProduct/Anbaonhieucalo-1200x676.jpg" alt="Kiến thức dinh dưỡng" class="post-image">
+                                </div>
+                                <div class="post-content">
+                                    <h3 class="post-title">Bạn nên nạp bao nhiêu thức ăn mỗi ngày?</h3>
+                                    <p class="post-snippet">Người lớn nên nạp lượng calo thích hợp theo độ tuổi, chú trọng ăn ngũ cốc nguyên hạt, nhiều rau quả, trái cây. Hãy cùng tìm hiểu... (nhấn để xem chi tiết)</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </section>
@@ -393,9 +442,39 @@
                         </div>
                     </div>
                 </section>
-            </div> 
+                    <!-- <h3>Cổng Quản Trị</h3>
+                    <p>Admin có thể xem và chỉnh sửa dữ liệu mẫu (`data.json`) tại đây.</p>
+                    <pre id="admin-data-display">Đang tải data.json...</pre>
+                </section> -->
+            </div>
+             <button id="scrollToTopBtn" title="Lên đầu trang">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+             <footer class="main-footer">
+            <a href="index.html" class="footer-main-logo">
+                <i class="fa-solid fa-leaf"></i>
+                <span>Nutrition</span>
+            </a>
+        
+            <div class="footer-content-wrapper">
+                <div class="footer-column about">
+                    <h4><i class="fa-solid fa-leaf"></i> Nutrition</h4>
+                    <p class="footer-description">Sứ mệnh của Nutrition là hướng đến mọi người dùng và mang đến một trải nghiệm tốt nhất, giúp bạn có một kế hoạch ăn uống khoẻ, nhưng vẫn đầy đủ chế độ dinh dưỡng.</p>
+                    <a href="#about" class="action-btn">Tìm hiểu thêm</a>
+                </div>
+        
+                <div class="footer-column contact">
+                    <h4>Liên Hệ</h4>
+                    <div class="contact-info-text">
+                        <p><strong>Địa chỉ:</strong> abc Phước Kiển, Nhà Bè, TP. HCM</p>
+                        <p><strong>Điện thoại:</strong> 086xx7xxxx</p>
+                        <p><strong>Email:</strong> treetreetree@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            </footer>
         </main>
     </div>
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

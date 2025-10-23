@@ -26,6 +26,7 @@ pillow==12.0.0
 prompt_toolkit==3.0.52
 protobuf==5.27.3
 Pygments==2.19.2
+python-dotenv==1.1.1
 python-rapidjson==1.21
 PyYAML==6.0.3
 requests==2.32.5

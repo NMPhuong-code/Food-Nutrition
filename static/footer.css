@@ -2,8 +2,8 @@
 
 .main-footer {
     background-color: #f7f7f7; /* Nền xám nhạt cho toàn bộ footer */
-    border-top: 1px solid #eee; 
-    padding: 30px 0 20px 0; /* Giảm padding trên dưới */
+    border-block-start: 1px solid #eee; 
+    padding: 10px 0 5px 0; /* Giảm padding trên dưới */
     font-family: 'Roboto', sans-serif;
     color: #555;
     text-align: center; 
@@ -16,7 +16,7 @@
 }
 
 .footer-content-wrapper {
-    max-width: 800px; /* Giảm chiều rộng tối đa của wrapper */
+    max-inline-size: 800px; /* Giảm chiều rộng tối đa của wrapper */
     margin: 0 auto;
     padding: 0 15px; /* Giảm padding ngang */
     display: flex;
@@ -29,11 +29,11 @@
     background-color: #ffffff; 
     border-radius: 8px; /* Giảm bo tròn */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ hơn */
-    padding: 20px; /* Giảm padding bên trong mỗi cột */
+    padding: 5px; /* Giảm padding bên trong mỗi cột */
     flex: 1; 
-    min-width: 280px; /* Giảm min-width */
-    max-width: 380px; /* Giảm max-width */
-    text-align: left; 
+    min-inline-size: 280px; /* Giảm min-width */
+    max-inline-size: 380px; /* Giảm max-width */
+    text-align: start; 
     display: flex; 
     flex-direction: column; 
     align-items: flex-start; 
@@ -46,20 +46,20 @@
     color: #28a745; 
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1em; /* Giảm kích thước tiêu đề */
-    margin-top: 0;
-    margin-bottom: 5px;
+    margin-block-start: 0;
+    margin-block-end: 5px;
 }
 
 .footer-column h4 i {
-    margin-right: 7px; /* Giảm khoảng cách icon */
+    margin-inline-end: 7px; /* Giảm khoảng cách icon */
     font-size: 1em; /* Giảm kích thước icon */
 }
 
 .footer-description {
-    font-size: 0.88em; /* Giảm kích thước mô tả */
+    font-size: 0.80em; /* Giảm kích thước mô tả */
     line-height: 1.5; /* Điều chỉnh line-height */
     color: #666;
-    margin-bottom: 8px; /* Giảm margin bottom */
+    margin-block-end: 8px; /* Giảm margin bottom */
 }
 
 .footer-column .action-btn {
@@ -72,7 +72,7 @@
     font-size: 0.85em; /* Giảm kích thước font nút */
     transition: background-color 0.3s ease;
     align-self: flex-start; 
-    margin-top: 5px;
+    margin-block-start: 5px;
 }
 
 .footer-column .action-btn:hover {
@@ -81,7 +81,7 @@
 
 .contact-info-text p {
     margin: 0;
-    font-size: 0.88em; /* Giảm kích thước thông tin liên hệ */
+    font-size: 0.80em; /* Giảm kích thước thông tin liên hệ */
     line-height: 1.5;
     color: #666;
 }
@@ -91,16 +91,21 @@
     font-weight: 500;
 }
 
+#scrollToTopBtn:hover {
+    background-color: #0d8bf2;
+    transform: translateY(-2px); /* Hiệu ứng nhỏ hơn */
+}
+
 /* --- NÚT CUỘN LÊN ĐẦU TRANG --- */
 #scrollToTopBtn {
     display: none; 
     position: fixed; 
-    bottom: 20px; /* Giảm khoảng cách với đáy */
-    right: 20px; /* Giảm khoảng cách với lề phải */
-    background-color: #2196F3; 
+    inset-block-end: 20px; /* Giảm khoảng cách với đáy */
+    inset-inline-end: 20px; /* Giảm khoảng cách với lề phải */
+    background-color: #31f05d; 
     color: white;
-    width: 45px; /* Giảm kích thước nút */
-    height: 45px; 
+    inline-size: 40px; /* Giảm kích thước nút */
+    block-size: 40px; 
     border-radius: 50%; 
     border: none;
     outline: none;
@@ -112,11 +117,6 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-#scrollToTopBtn:hover {
-    background-color: #0d8bf2;
-    transform: translateY(-2px); /* Hiệu ứng nhỏ hơn */
-}
-
 /* Media Queries */
 @media (max-width: 768px) {
     .footer-content-wrapper {
@@ -125,19 +125,19 @@
         gap: 20px; /* Giảm khoảng cách giữa các cột khi xếp dọc */
     }
     .footer-column {
-        min-width: unset; 
-        width: 90%; 
-        max-width: 400px; /* Giảm max-width trên mobile */
+        min-inline-size: unset; 
+        inline-size: 90%; 
+        max-inline-size: 400px; /* Giảm max-width trên mobile */
         padding: 18px; /* Giảm padding trên mobile */
     }
     .main-footer {
-        padding-top: 30px;
+        padding-block-start: 30px;
     }
     #scrollToTopBtn {
-        width: 40px;
-        height: 40px;
+        inline-size: 40px;
+        block-size: 40px;
         font-size: 1.2em;
-        bottom: 15px;
-        right: 15px;
+        inset-block-end: 15px;
+        inset-inline-end: 15px;
     }
 }

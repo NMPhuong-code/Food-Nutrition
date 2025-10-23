@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập - Nutrition</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="login.style.css">
+    <link rel="stylesheet" href="/static/login.style.css">
 </head>
 <body>
     <div class="background-image"></div>
     <div class="container">
-        <!-- Ban đầu chỉ hiển thị phần chọn vai trò -->
         <div id="role-selection" class="login-card">
             <h1>Nutrition</h1>
             <p>Chọn vai trò để bắt đầu truy cập hệ thống</p>
@@ -19,12 +18,9 @@
         </div>
     </div>
 
-    <!-- Cửa sổ Đăng nhập / Đăng ký (Modal) - Ẩn ban đầu -->
     <div id="auth-modal" class="modal-overlay" style="display: none;">
         <div class="modal-content">
             <span class="close-button">&times;</span>
-
-            <!-- Form Đăng nhập -->
             <div id="login-view">
                 <h2 id="login-title">Đăng nhập</h2>
                 <form id="login-form">
@@ -37,7 +33,6 @@
                         <input type="password" id="login-password" required>
                         <i class="fa-solid fa-eye toggle-password"></i>
                     </div>
-                    <!-- Mã bảo vệ cho User -->
                     <div id="captcha-section" class="input-group" style="display: none;">
                         <label for="captcha-input">Mã bảo vệ</label>
                         <div class="captcha-box">
@@ -51,12 +46,10 @@
                 </form>
                 <p id="register-link-container" class="form-switch-text">Chưa có tài khoản? <a href="#" id="show-register-view">Tạo tài khoản</a></p>
             </div>
-
-            <!-- Form Đăng ký -->
             <div id="register-view" style="display: none;">
-                <h2>Tạo tài khoản</h2>
+                 <h2>Tạo tài khoản</h2>
                 <form id="register-form">
-                    <div class="input-group">
+                   <div class="input-group">
                         <label for="register-username">Tài khoản mới</label>
                         <input type="text" id="register-username" required>
                     </div>
@@ -78,8 +71,6 @@
             </div>
         </div>
     </div>
-
-    <script src="login.js"></script>
+    <script src="/static/login.js"></script>
 </body>
 </html>
-
